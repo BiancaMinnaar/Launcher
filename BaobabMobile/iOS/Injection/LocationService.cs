@@ -44,7 +44,8 @@ namespace BaobabMobile.iOS.Injection
                     // fire our custom Location Updated event
                     LocationUpdated(this, new LocationUpdatedEventArgs<ILocation>(new Location()
                     {
-                        Lat=e.Locations[e.Locations.Length - 1].Coordinate.Latitude
+                        Lat=e.Locations[e.Locations.Length - 1].Coordinate.Latitude,
+                        Lon=e.Locations[e.Locations.Length - 1].Coordinate.Longitude
                     }));//e.Locations[e.Locations.Length - 1]));
                 };
                 locationManager.StartUpdatingLocation();

@@ -13,7 +13,7 @@ namespace BaobabMobile.Implementation.Repository
     public class DashboardRepository<T> : ProjectBaseRepository, IDashboardRepository<T>
         where T : BaseViewModel
     {
-        DashboardViewModel _Model;
+        public DashboardViewModel _Model;
         IDashboardService<T> _Service;
         ILocationService<ILocation> _LocationService;
 
@@ -27,10 +27,17 @@ namespace BaobabMobile.Implementation.Repository
             _LocationService.StartLocationUpdates();
         }
 
-        #region Public Methods
-        public void HandleLocationChanged(object sender, LocationUpdatedEventArgs<ILocation> e)
+        private void translate(DashboardViewModel oldObj, ILocation newObj)
         {
-            _Model.Lat = e.Location.Lat;
+            oldObj.Lat = newObj.Lat;
+            oldObj.Lon = newObj.Lon;
+        }
+
+        #region Public Methods
+        public async void HandleLocationChanged(object sender, LocationUpdatedEventArgs<ILocation> e)
+        {
+            translate(_Model, e.Location);
+            await Refresh(_Model, (obj) => { });
         }
         #endregion
 
@@ -41,7 +48,7 @@ namespace BaobabMobile.Implementation.Repository
 
         public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
-            
+            translate(model, _Model);
             var serviceReturnModel = await _Service.Refresh(model);
             completeAction(serviceReturnModel);
         }

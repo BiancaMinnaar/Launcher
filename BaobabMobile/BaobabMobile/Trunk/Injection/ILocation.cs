@@ -3,6 +3,7 @@ namespace BaobabMobile.Trunk.Injection
 {
     public interface ILocation
     {
-        double Lat { get; }
+        double Lat { get; set; }
+        double Lon { get; set; }
     }
 }

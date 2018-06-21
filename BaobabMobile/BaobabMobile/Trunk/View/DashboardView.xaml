@@ -25,9 +25,12 @@
                         <Label Text="Lat" />
                         <Label Text="{Binding Lat}" />
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Lon" />
+                        <Label Text="{Binding Lon}" />
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Refresh" Clicked="On_Refresh_Event" />
                     <Button Text="Minimize" Clicked="On_Minimize_Event" />
                 </StackLayout>
             </StackLayout>

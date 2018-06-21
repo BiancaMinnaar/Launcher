@@ -21,7 +21,8 @@ namespace BaobabMobile.Implementation.Service
             var httpMethod = BaseNetworkAccessEnum.Get;
             var parameters = new Dictionary<string, ParameterTypedValue>()
             {
-                //{"Parameter", model.Property},
+                {"Lat", new ParameterTypedValue(model.Lat)},
+                {"Lon", new ParameterTypedValue(model.Lon)}
             };
             return await _NetworkInterface(requestURL, parameters, null, httpMethod);
         }

@@ -23,7 +23,9 @@ namespace BaobabMobile.Implementation.ViewController
 
         public void Refresh()
         {
-            _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => { });  
+            _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => 
+            {
+            });  
         }
 
         public void Minimize()

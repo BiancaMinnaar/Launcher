@@ -12,7 +12,7 @@ namespace BaobabMobile.Implementation.View
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            BindingContext = _ViewController.InputObject;
         }
 
         protected override void SetSVGCollection()
@@ -22,13 +22,14 @@ namespace BaobabMobile.Implementation.View
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-            _ViewController.Refresh();
-            BindingContext = _ViewController.InputObject;
+            On_Refresh_Event(this, null);
+
 		}
 
 		public void On_Refresh_Event(object sender, EventArgs e)
         {
             _ViewController.Refresh();
+
         }
 
         public void On_Minimize_Event(object sender, EventArgs e)
