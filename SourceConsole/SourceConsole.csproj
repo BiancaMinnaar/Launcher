@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Service\" />
+    <Folder Include="Templates\" />
+    <Folder Include="Templates\DataModel\" />
+    <Folder Include="Repository\Implementation\" />
+    <Folder Include="Service\Implementation\" />
+    <Folder Include="Templates\Custom\" />
+    <Folder Include="Templates\Custom\PartialClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TemplaterBonsai" Version="1.2.3" />
+  </ItemGroup>
+</Project>

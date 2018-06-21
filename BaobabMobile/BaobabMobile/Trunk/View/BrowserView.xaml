@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:ProjectBaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:BaobabMobile.Root.View"
+    xmlns:m="clr-namespace:BaobabMobile.Implementation.ViewModel"
+    xmlns:p="clr-namespace:BaobabMobile.Implementation.ViewController"
+    xmlns:b="clr-namespace:BaobabMobile.Implementation.View"
+    xmlns:svg="clr-namespace:TwinTechsForms.NControl;assembly=TwinTechsForms.NControl.SvgImageView"
+    xmlns:image="clr-namespace:MobileBonsai.View"
+    x:Class="BaobabMobile.Implementation.View.BrowserView" 
+    x:TypeArguments="p:BrowserViewController, m:BrowserViewModel"
+    BackgroundColor="Silver">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <image:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout HeightRequest="30" />
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Entry Text="{Binding WebUrl, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Keyboard="Url" />
+                    <Button Text="Go" BackgroundColor="Blue" WidthRequest="40" Clicked="On_Navigate_Event" />
+                </StackLayout>
+                <Frame BorderColor="Black" HeightRequest="600">
+                    <WebView x:Name="BaobabBrowser" Source="{Binding WebUrl}"  WidthRequest="1000" HeightRequest="1000" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ProjectBaseContentPage>
