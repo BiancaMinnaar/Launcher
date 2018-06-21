@@ -112,6 +112,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Injection\RestServiceIOS.cs" />
     <Compile Include="Injection\LocationService.cs" />
+    <Compile Include="Injection\Location.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

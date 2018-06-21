@@ -17,7 +17,7 @@ namespace BaobabMobile.Implementation.Service
 
         public async Task<T> Refresh(DashboardViewModel model)
         {
-            string requestURL = "/path/{Parameter}";
+            string requestURL = "/dashboard";
             var httpMethod = BaseNetworkAccessEnum.Get;
             var parameters = new Dictionary<string, ParameterTypedValue>()
             {

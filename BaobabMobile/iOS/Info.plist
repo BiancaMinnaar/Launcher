@@ -46,14 +46,18 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>Custom Property</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
 		<string>fetch</string>
 	</array>
-	<key>Custom Property</key>
-	<array>
-		<string>location</string>
-	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please give us your Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please Give us your Location</string>
 </dict>
 </plist>

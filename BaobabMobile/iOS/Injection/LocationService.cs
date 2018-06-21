@@ -1,13 +1,16 @@
 ﻿using System;
+using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection;
 using CoreLocation;
 using UIKit;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.iOS.Injection
 {
-    public class LocationService : ILocationService<CLLocation>
+    public class LocationService : ILocationService<ILocation>
     {
-        public event EventHandler<LocationUpdatedEventArgs<CLLocation>> LocationUpdated = delegate { };
+        public event EventHandler<LocationUpdatedEventArgs<ILocation>> LocationUpdated = delegate { };
         protected CLLocationManager locationManager;
 
         public LocationService()
@@ -39,7 +42,10 @@ namespace BaobabMobile.iOS.Injection
                 locationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
                 {
                     // fire our custom Location Updated event
-                    LocationUpdated(this, new LocationUpdatedEventArgs<CLLocation>(e.Locations[e.Locations.Length - 1]));
+                    LocationUpdated(this, new LocationUpdatedEventArgs<ILocation>(new Location()
+                    {
+                        Lat=e.Locations[e.Locations.Length - 1].Coordinate.Latitude
+                    }));//e.Locations[e.Locations.Length - 1]));
                 };
                 locationManager.StartUpdatingLocation();
             }

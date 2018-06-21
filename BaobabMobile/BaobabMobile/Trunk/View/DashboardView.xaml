@@ -21,8 +21,13 @@
             <StackLayout Orientation="Vertical">
                 <StackLayout Orientation="Vertical">
                     <!--Detail-->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Lat" />
+                        <Label Text="{Binding Lat}" />
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Refresh" Clicked="On_Refresh_Event" />
                     <Button Text="Minimize" Clicked="On_Minimize_Event" />
                 </StackLayout>
             </StackLayout>

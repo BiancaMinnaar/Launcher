@@ -2,7 +2,7 @@
 
 namespace BaobabMobile.Trunk.Injection
 {
-    public class LocationUpdatedEventArgs<T>
+    public class LocationUpdatedEventArgs<T> where T : ILocation
     {
         T location;
 

@@ -18,12 +18,12 @@ namespace BaobabMobile.Implementation.ViewController
         {
             _Service = new DashboardService<DashboardViewModel>((U, P, C, A) => 
                                                            ExecuteQueryWithReturnTypeAndNetworkAccessAsync<DashboardViewModel>(U, P, C, A));
-            _Reposetory = new DashboardRepository<DashboardViewModel>(_MasterRepo, _Service);
+            _Reposetory = new DashboardRepository<DashboardViewModel>(_MasterRepo, _Service, InputObject);
         }
 
-        public async Task Refresh()
+        public void Refresh()
         {
-            
+            _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => { });  
         }
 
         public void Minimize()

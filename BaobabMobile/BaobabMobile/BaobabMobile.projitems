@@ -90,6 +90,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\DashboardRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IDashboardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\DashboardService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\ILocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
