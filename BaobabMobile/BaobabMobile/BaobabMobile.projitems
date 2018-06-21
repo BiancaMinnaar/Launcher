@@ -22,6 +22,10 @@
       <SubType>Designer</SubType>
       <Generator>Generator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Trunk\View\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>Generator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Root\CheckAndBalance.cs" />
@@ -76,6 +80,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\ILoginService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\LoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\DashboardViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\View\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\IDashboardViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\Implementation\DashboardViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\IDashboardRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\DashboardRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IDashboardService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\DashboardService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
