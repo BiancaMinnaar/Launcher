@@ -11,7 +11,7 @@ namespace BaobabMobile
             InitializeComponent();
 
             var _MasterRepo = MasterRepository.MasterRepo;
-            _MasterRepo.SetRootView(new NavigationPage(new TrackLocationView()));
+            _MasterRepo.SetRootView(new NavigationPage(new LoginView()));
             MainPage = _MasterRepo.GetRootView();
         }
 

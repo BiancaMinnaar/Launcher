@@ -17,11 +17,12 @@ namespace BaobabMobile.Implementation.Service
 
         public async Task<T> Login(LoginViewModel model)
         {
-            string requestURL = "/path/{Parameter}";
+            string requestURL = "/login";
             var httpMethod = BaseNetworkAccessEnum.Get;
             var parameters = new Dictionary<string, ParameterTypedValue>()
             {
-                //{"Parameter", model.Property},
+                {"username", new ParameterTypedValue(model.UserName)},
+                {"password", new ParameterTypedValue(model.Password)}
             };
             return await _NetworkInterface(requestURL, parameters, null, httpMethod);
         }

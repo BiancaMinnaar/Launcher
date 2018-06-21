@@ -18,6 +18,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        
+        <StackLayout Orientation="Vertical" Padding="20,20,20,20" VerticalOptions="Start" HorizontalOptions="Center">
+            <StackLayout HeightRequest="100" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="User Name" FontSize="15" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry x:Name="usernameEntry" Text="{Binding UserName, Mode=TwoWay}" Placeholder="USERNAME" BackgroundColor="White" TextColor="Gray" FontSize="15" HeightRequest="40"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Password" FontSize="15" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry x:Name="passwordEntry" Text="{Binding Password, Mode=TwoWay}" Placeholder="PASSWORD" IsPassword="true"  BackgroundColor="White" TextColor="Gray" FontSize="15" HeightRequest="40"/>
+            </StackLayout>
+            <Button x:Name="btnLogin" Text="Login" Clicked="On_Login_Event" TextColor="Black" BorderColor="Red" BorderWidth="1" />
+        </StackLayout>
     </ContentPage.Content>
 </base:ProjectBaseContentPage>
