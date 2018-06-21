@@ -5,5 +5,6 @@ namespace BaobabMobile.Interface.ViewController
     public interface IDashboardViewController
     {
         Task Refresh();
+        void Minimize();
     }
 }

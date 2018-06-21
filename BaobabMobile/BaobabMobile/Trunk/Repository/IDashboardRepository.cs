@@ -9,5 +9,6 @@ namespace BaobabMobile.Interface.Repository
         where T : BaseViewModel
     {
         Task Refresh(DashboardViewModel model, Action<T> completeAction);
+        void Minimize();
     }
 }

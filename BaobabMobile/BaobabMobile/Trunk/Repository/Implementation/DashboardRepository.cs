@@ -19,6 +19,11 @@ namespace BaobabMobile.Implementation.Repository
             _Service = service;
         }
 
+        public void Minimize()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
             var serviceReturnModel = await _Service.Refresh(model);

@@ -12,7 +12,7 @@ namespace BaobabMobile.Interface.Repository
         void ShowLoading();
         void HideLoading();
         void DumpJson<T>(string heading, T objectToDump);
-        void PushHomeView();
+        void PushDashboardView();
     }
 }
 

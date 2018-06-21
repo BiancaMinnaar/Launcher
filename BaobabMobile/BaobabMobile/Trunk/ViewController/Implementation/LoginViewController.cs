@@ -23,7 +23,10 @@ namespace BaobabMobile.Implementation.ViewController
 
         public async Task Login()
         {
-            await _Reposetory.Login(InputObject, (LoginViewModel obj) => { });
+            await _Reposetory.Login(InputObject, (LoginViewModel obj) => 
+            {
+                _MasterRepo.PushDashboardView();
+            });
         }
     }
 }

@@ -9,6 +9,7 @@ using BaobabMobile.Root.Repository;
 using BaobabMobile.Root.ViewModel;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using BaobabMobile.Implementation.View;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
 {
@@ -77,9 +78,9 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
-        public void PushHomeView()
+        public void PushDashboardView()
         {
-           // _Navigation.PushAsync(new HomeView());
+            _Navigation.PushAsync(new DashboardView());
         }
     }
 }

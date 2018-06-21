@@ -9,15 +9,23 @@
     xmlns:svg="clr-namespace:TwinTechsForms.NControl;assembly=TwinTechsForms.NControl.SvgImageView"
     xmlns:image="clr-namespace:MobileBonsai.View"
     x:Class="BaobabMobile.Implementation.View.DashboardView" 
-    x:TypeArguments="p:DashboardViewController, m:DashboardViewModel" 
-    BackgroundColor="#565E60"
-    Title="Login">
+    x:TypeArguments="p:DashboardViewController, m:DashboardViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <image:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        
+        <StackLayout Orientation="Vertical">
+            <StackLayout HeightRequest="20"></StackLayout>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical">
+                    <!--Detail-->
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="Minimize" Clicked="On_Minimize_Event" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </base:ProjectBaseContentPage>

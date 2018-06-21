@@ -25,5 +25,10 @@ namespace BaobabMobile.Implementation.ViewController
         {
             
         }
+
+        public void Minimize()
+        {
+            _Reposetory.Minimize();
+        }
     }
 }

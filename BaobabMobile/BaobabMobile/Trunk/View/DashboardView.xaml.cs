@@ -23,6 +23,11 @@ namespace BaobabMobile.Implementation.View
         {
             await _ViewController.Refresh();
         }
+
+        public void On_Minimize_Event(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 
