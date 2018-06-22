@@ -6,15 +6,14 @@ AssetManager, like this:
 
 public class ReadAsset : Activity
 {
-    protected override void OnCreate (Bundle bundle)
-    {
-        base.OnCreate (bundle);
+	protected override void OnCreate (Bundle bundle)
+	{
+		base.OnCreate (bundle);
 
-        InputStream input = Assets.Open ("my_asset.txt");
-    }
+		InputStream input = Assets.Open ("my_asset.txt");
+	}
 }
 
 Additionally, some Android functions will automatically load asset files:
 
 Typeface tf = Typeface.CreateFromAsset (Context.Assets, "fonts/samplefont.ttf");
-
