@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection;
 using CoreLocation;
@@ -33,7 +34,7 @@ namespace BaobabMobile.iOS.Injection
             }
         }
 
-        public void StartLocationUpdates()
+        public async Task StartLocationUpdates()
         {
             if (CLLocationManager.LocationServicesEnabled)
             {
@@ -48,7 +49,7 @@ namespace BaobabMobile.iOS.Injection
                         Lon=e.Locations[e.Locations.Length - 1].Coordinate.Longitude
                     }));//e.Locations[e.Locations.Length - 1]));
                 };
-                locationManager.StartUpdatingLocation();
+                await Task.Run(() => locationManager.StartUpdatingLocation());
             }
         }
     }
