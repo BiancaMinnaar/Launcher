@@ -3,7 +3,7 @@ using Plugin.Connectivity.Abstractions;
 
 namespace BaobabMobile.Trunk.Injection.SignalStrength
 {
-    public interface ISignalStrengthService<T> where T : ISignalSrength
+    public interface ISignalStrengthService<T> where T : ISignalStrength
     {
         event EventHandler<SignalStrengthUpdatedEventArgs<T>> SignalStrengthChanged;
 

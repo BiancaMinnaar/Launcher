@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using BaobabMobile.Root.ViewModel;
 using BaobabMobile.Trunk.Injection.Location;
@@ -27,6 +26,17 @@ namespace BaobabMobile.Implementation.ViewModel
                 lat = value; 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lat"));
             } 
+        }
+
+        int signalStrength;
+        public int SignalStrength
+        {
+            get => signalStrength;
+            set
+            {
+                signalStrength = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SignalStrength"));
+            }
         }
     }
 }

@@ -127,6 +127,7 @@
     <Compile Include="Injection\Location\LocationService.cs" />
     <Compile Include="Injection\Rest\RestServiceDroid.cs" />
     <Compile Include="Injection\SignalStrength\SignalStrengthService.cs" />
+    <Compile Include="Injection\SignalStrength\SignalStrength.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

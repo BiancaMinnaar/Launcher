@@ -29,6 +29,11 @@
                         <Label Text="Lon" />
                         <Label Text="{Binding Lon}" />
                     </StackLayout>
+                    <StackLayout HeightRequest="20" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="SignalStrength" />
+                        <Label Text="{Binding SignalStrength}" />
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="Minimize" Clicked="On_Minimize_Event" />

@@ -1,6 +1,6 @@
 ﻿namespace BaobabMobile.Trunk.Injection.SignalStrength
 {
-    public class SignalStrengthUpdatedEventArgs<T> where T : ISignalSrength
+    public class SignalStrengthUpdatedEventArgs<T> where T : ISignalStrength
     {
         T signalStrength;
 

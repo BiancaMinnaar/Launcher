@@ -7,6 +7,7 @@ using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.Repository;
 using BaobabMobile.Trunk.Injection.Location;
 using Xamarin.Forms;
+using BaobabMobile.Trunk.Injection.SignalStrength;
 
 namespace BaobabMobile.Implementation.Repository
 {
@@ -16,6 +17,7 @@ namespace BaobabMobile.Implementation.Repository
         public DashboardViewModel _Model;
         IDashboardService<T> _Service;
         ILocationService<ILocation> _LocationService;
+        ISignalStrengthService<ISignalStrength> _SignalStrengthService;
 
         public DashboardRepository(IMasterRepository masterRepository, IDashboardService<T> service, DashboardViewModel model)
             : base(masterRepository)
@@ -25,6 +27,9 @@ namespace BaobabMobile.Implementation.Repository
             _LocationService.LocationUpdated += HandleLocationChanged;
             _Model = model;
             _LocationService.StartLocationUpdates();
+            _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
+            _SignalStrengthService.SignalStrengthChanged += HandleSignlStrengthChanged;
+
         }
 
         private void translate(DashboardViewModel oldObj, ILocation newObj)
@@ -38,6 +43,10 @@ namespace BaobabMobile.Implementation.Repository
         {
             translate(_Model, e.Location);
             await Refresh(_Model, (obj) => { });
+        }
+        public void HandleSignlStrengthChanged(object sender, SignalStrengthUpdatedEventArgs<ISignalStrength> e)
+        {
+            
         }
         #endregion
 

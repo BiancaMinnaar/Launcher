@@ -7,9 +7,9 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SignalStrengthService))]
 namespace BaobabMobile.iOS.Injection.SignalStrength
 {
-    public class SignalStrengthService : ISignalStrengthService<ISignalSrength>
+    public class SignalStrengthService : ISignalStrengthService<ISignalStrength>
     {
-        public event EventHandler<SignalStrengthUpdatedEventArgs<ISignalSrength>> SignalStrengthChanged;
+        public event EventHandler<SignalStrengthUpdatedEventArgs<ISignalStrength>> SignalStrengthChanged;
 
         public int SignalStrength
         {

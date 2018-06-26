@@ -1,6 +1,6 @@
 ﻿namespace BaobabMobile.Trunk.Injection.SignalStrength
 {
-    public interface ISignalSrength
+    public interface ISignalStrength
     {
         int Strength { get; set; }
     }
