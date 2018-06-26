@@ -110,9 +110,9 @@
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="Injection\RestServiceIOS.cs" />
-    <Compile Include="Injection\LocationService.cs" />
-    <Compile Include="Injection\Location.cs" />
+    <Compile Include="Injection\Location\Location.cs" />
+    <Compile Include="Injection\Location\LocationService.cs" />
+    <Compile Include="Injection\Rest\RestServiceIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -132,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Injection\" />
+    <Folder Include="Injection\Location\" />
+    <Folder Include="Injection\Rest\" />
+    <Folder Include="Injection\SignalStrength\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
