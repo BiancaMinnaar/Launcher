@@ -67,9 +67,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\TrackLocationRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\ITrackLocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\TrackLocationService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\ILocationService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\ILocationManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\LocationUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -90,7 +87,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\DashboardRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IDashboardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\DashboardService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\ILocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\ILocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\ILocationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\LocationUpdatedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -104,5 +103,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\View\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\" />
   </ItemGroup>
 </Project>

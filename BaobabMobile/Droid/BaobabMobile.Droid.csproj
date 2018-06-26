@@ -58,9 +58,6 @@
     <PackageReference Include="Xamarin.Android.Support.Annotations">
       <Version>27.0.2.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Compat">
-      <Version>27.0.2.1</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Core.UI">
       <Version>27.0.2.1</Version>
     </PackageReference>

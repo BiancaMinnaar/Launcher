@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BaobabMobile.Trunk.Injection
+namespace BaobabMobile.Trunk.Injection.Location
 {
     public class LocationUpdatedEventArgs<T> where T : ILocation
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using BaobabMobile.Trunk.Injection;
+﻿using BaobabMobile.Trunk.Injection.Location;
 
 namespace BaobabMobile.Droid.Injection
 {

@@ -5,7 +5,7 @@ using BaobabMobile.Implementation.ViewModel;
 using BaobabMobile.Interface.Repository;
 using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.Repository;
-using BaobabMobile.Trunk.Injection;
+using BaobabMobile.Trunk.Injection.Location;
 using Xamarin.Forms;
 
 namespace BaobabMobile.Implementation.Repository

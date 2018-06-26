@@ -1,5 +1,4 @@
-﻿using System;
-namespace BaobabMobile.Trunk.Injection
+﻿namespace BaobabMobile.Trunk.Injection.Location
 {
     public interface ILocation
     {

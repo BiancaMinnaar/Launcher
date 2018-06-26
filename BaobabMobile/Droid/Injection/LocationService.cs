@@ -5,7 +5,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection;
-using BaobabMobile.Trunk.Injection;
+using BaobabMobile.Trunk.Injection.Location;
 using Plugin.Geolocation;
 using Xamarin.Forms;
 

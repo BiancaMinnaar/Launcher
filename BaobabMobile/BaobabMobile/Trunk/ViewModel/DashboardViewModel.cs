@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using BaobabMobile.Root.ViewModel;
-using BaobabMobile.Trunk.Injection;
+using BaobabMobile.Trunk.Injection.Location;
 
 namespace BaobabMobile.Implementation.ViewModel
 {

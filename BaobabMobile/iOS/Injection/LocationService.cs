@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BaobabMobile.iOS.Injection;
-using BaobabMobile.Trunk.Injection;
+using BaobabMobile.Trunk.Injection.Location;
 using CoreLocation;
 using UIKit;
 using Xamarin.Forms;
