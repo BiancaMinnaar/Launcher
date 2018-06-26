@@ -1,6 +1,6 @@
 ﻿using BaobabMobile.Trunk.Injection.Location;
 
-namespace BaobabMobile.Droid.Injection
+namespace BaobabMobile.Droid.Injection.Location
 {
     public class Location : ILocation
     {

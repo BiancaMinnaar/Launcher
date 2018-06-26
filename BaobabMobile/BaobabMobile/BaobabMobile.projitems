@@ -91,6 +91,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\ILocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\LocationUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\ISignalStrengthService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\SignalStrengthUpdatedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\ISignalSrength.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />

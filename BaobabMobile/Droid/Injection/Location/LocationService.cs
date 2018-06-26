@@ -4,13 +4,13 @@ using Android;
 using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
-using BaobabMobile.Droid.Injection;
+using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Location;
 using Plugin.Geolocation;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
-namespace BaobabMobile.Droid.Injection
+namespace BaobabMobile.Droid.Injection.Location
 {
     public class LocationService : ILocationService<ILocation>
     {

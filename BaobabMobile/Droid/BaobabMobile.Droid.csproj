@@ -122,10 +122,11 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Injection\RestServiceDroid.cs" />
     <None Include="Properties\AndroidManifest.xml" />
-    <Compile Include="Injection\Location.cs" />
-    <Compile Include="Injection\LocationService.cs" />
+    <Compile Include="Injection\Location\Location.cs" />
+    <Compile Include="Injection\Location\LocationService.cs" />
+    <Compile Include="Injection\Rest\RestServiceDroid.cs" />
+    <Compile Include="Injection\SignalStrength\SignalStrengthService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -140,6 +141,9 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Injection\" />
+    <Folder Include="Injection\Location\" />
+    <Folder Include="Injection\Rest\" />
+    <Folder Include="Injection\SignalStrength\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
