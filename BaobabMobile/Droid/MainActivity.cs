@@ -1,10 +1,6 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
 using BaobabMobile.Droid.Injection.Base;
@@ -16,7 +12,6 @@ namespace BaobabMobile.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-
             base.OnCreate(bundle);
             PlatformBonsai.Instance.PlatformServiceList.Add("TelephonyService",
                 GetSystemService(Context.TelephonyService));
@@ -31,4 +26,3 @@ namespace BaobabMobile.Droid
         }
     }
 }
-
