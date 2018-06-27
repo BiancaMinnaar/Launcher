@@ -28,7 +28,7 @@ namespace BaobabMobile.Implementation.Repository
             _Model = model;
             _LocationService.StartLocationUpdates();
             _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
-            _SignalStrengthService.SignalStrengthChanged += HandleSignlStrengthChanged;
+            _SignalStrengthService.ServiceCallback = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
 
         }
 
@@ -46,7 +46,7 @@ namespace BaobabMobile.Implementation.Repository
         }
         public void HandleSignlStrengthChanged(object sender, SignalStrengthUpdatedEventArgs<ISignalStrength> e)
         {
-            
+            _Model.SignalStrength = e.SignalStrength.Strength;
         }
         #endregion
 

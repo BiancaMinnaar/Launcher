@@ -1,38 +1,38 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.Telephony;
+using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.SignalStrength;
 using BaobabMobile.Trunk.Injection.SignalStrength;
-using Plugin.Connectivity.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SignalStrengthService))]
 namespace BaobabMobile.Droid.Injection.SignalStrength
 {
-    public class SignalStrengthService : PhoneStateListener, ISignalStrengthService<ISignalStrength>
+    public class SignalStrengthService : ISignalStrengthService<ISignalStrength>
     {
-        public event EventHandler<SignalStrengthUpdatedEventArgs<ISignalStrength>> SignalStrengthChanged;
+        public string ServiceKey => "TelephonyService";
+        TelephonyManager _telephonyManager;
+        GsmSignalStrengthListener _signalStrengthListener;
 
-        public int SignalStrength 
+        public SignalStrengthService()
         {
-            get;set;
+            _telephonyManager = (TelephonyManager)PlatformBonsai.Instance.PlatformServiceList[ServiceKey];
+            _signalStrengthListener = new GsmSignalStrengthListener();
+            _signalStrengthListener.SignalStrengthChanged += HandleSignalStrengthChanged;
+            _telephonyManager.Listen(_signalStrengthListener, PhoneStateListenerFlags.SignalStrengths);
         }
 
-        public int WifiSignalStrength 
-        { 
-            get; set;
+        public Action<ISignalStrength> ServiceCallback { get; set; }
+
+        public async Task GetSignalStrength()
+        {
+            await Task.Run(() => { HandleSignalStrengthChanged(0); });
         }
 
-        public int GetConnectionStrength(ConnectionType connectionType)
+        void HandleSignalStrengthChanged(int strength)
         {
-            throw new NotImplementedException();
-        }
-
-        public override void OnSignalStrengthsChanged(Android.Telephony.SignalStrength signalStrength)
-        {
-            base.OnSignalStrengthsChanged(signalStrength);
-            SignalStrengthChanged?.Invoke(
-                this, new SignalStrengthUpdatedEventArgs<ISignalStrength>(
-                    new SignalStrength { Strength = signalStrength.GsmSignalStrength }));
+            ServiceCallback?.Invoke(new SignalStrength { Strength = strength });
         }
     }
 }

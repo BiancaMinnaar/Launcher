@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
+using BaobabMobile.Droid.Injection.Base;
 
 namespace BaobabMobile.Droid
 {
@@ -17,7 +18,8 @@ namespace BaobabMobile.Droid
         {
 
             base.OnCreate(bundle);
-
+            PlatformBonsai.Instance.PlatformServiceList.Add("TelephonyService",
+                GetSystemService(Context.TelephonyService));
             global::Xamarin.Forms.Forms.Init(this, bundle);
             UserDialogs.Init(this);
             LoadApplication(new App());

@@ -9,7 +9,7 @@
             this.signalStrength = signalStrength;
         }
 
-        public T Location
+        public T SignalStrength
         {
             get { return signalStrength; }
         }
