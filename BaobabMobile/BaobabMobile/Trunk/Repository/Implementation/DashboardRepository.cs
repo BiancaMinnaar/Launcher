@@ -24,7 +24,11 @@ namespace BaobabMobile.Implementation.Repository
         {
             _Service = service;
             _LocationService = DependencyService.Get<ILocationService<ILocation>>();
-            _LocationService.LocationUpdated += HandleLocationChanged;
+            _LocationService.ServiceCallback = (location) =>
+            {
+                model.Lat = location.Lat;
+                model.Lon = location.Lon;
+            };
             _Model = model;
             _LocationService.StartLocationUpdates();
             _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();

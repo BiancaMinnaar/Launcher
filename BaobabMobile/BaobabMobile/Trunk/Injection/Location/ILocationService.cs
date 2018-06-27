@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BaobabMobile.Trunk.Injection.Base;
 
 namespace BaobabMobile.Trunk.Injection.Location
 {
-    public interface ILocationService<T> where T : ILocation
+    public interface ILocationService<T> : IPlatformService<T> where T : ILocation
     {
-        event EventHandler<LocationUpdatedEventArgs<T>> LocationUpdated;
         Task StartLocationUpdates();
     }
 }

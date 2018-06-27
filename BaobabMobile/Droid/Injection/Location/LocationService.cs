@@ -14,7 +14,6 @@ namespace BaobabMobile.Droid.Injection.Location
 {
     public class LocationService : ILocationService<ILocation>
     {
-		public event EventHandler<LocationUpdatedEventArgs<ILocation>> LocationUpdated;
         Context context = Android.App.Application.Context;
         bool isRequestingLocationUpdates;
 
@@ -27,6 +26,8 @@ namespace BaobabMobile.Droid.Injection.Location
                 isRequestingLocationUpdates = true;
             }
         }
+
+        public Action<ILocation> ServiceCallback { get; set; }
 
         public async Task StartLocationUpdates()
         {
@@ -41,11 +42,7 @@ namespace BaobabMobile.Droid.Injection.Location
 
                     if (position != null)
                     {
-                        LocationUpdated(this, new LocationUpdatedEventArgs<ILocation>(new Location()
-                        {
-                            Lat = position.Latitude,
-                            Lon = position.Longitude
-                        }));
+                        ServiceCallback?.Invoke(new Location { Lat = position.Latitude, Lon = position.Longitude });
                     }
 
                     if (!locator.IsGeolocationEnabled)

@@ -11,7 +11,6 @@ namespace BaobabMobile.iOS.Injection
 {
     public class LocationService : ILocationService<ILocation>
     {
-        public event EventHandler<LocationUpdatedEventArgs<ILocation>> LocationUpdated = delegate { };
         protected CLLocationManager locationManager;
 
         public LocationService()
@@ -34,6 +33,8 @@ namespace BaobabMobile.iOS.Injection
             }
         }
 
+        public Action<ILocation> ServiceCallback { get; set; }
+
         public async Task StartLocationUpdates()
         {
             if (CLLocationManager.LocationServicesEnabled)
@@ -43,11 +44,7 @@ namespace BaobabMobile.iOS.Injection
                 locationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
                 {
                     // fire our custom Location Updated event
-                    LocationUpdated(this, new LocationUpdatedEventArgs<ILocation>(new Location()
-                    {
-                        Lat=e.Locations[e.Locations.Length - 1].Coordinate.Latitude,
-                        Lon=e.Locations[e.Locations.Length - 1].Coordinate.Longitude
-                    }));//e.Locations[e.Locations.Length - 1]));
+                    ServiceCallback?.Invoke(new Location {Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude});
                 };
                 await Task.Run(() => locationManager.StartUpdatingLocation());
             }

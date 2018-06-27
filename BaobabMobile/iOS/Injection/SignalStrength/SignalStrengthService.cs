@@ -9,8 +9,6 @@ namespace BaobabMobile.iOS.Injection.SignalStrength
 {
     public class SignalStrengthService : ISignalStrengthService<ISignalStrength>
     {
-        public string ServiceKey => throw new NotImplementedException();
-
         public Action<ISignalStrength> ServiceCallback { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Task GetSignalStrength()
