@@ -33,7 +33,6 @@ namespace BaobabMobile.Implementation.Repository
             _LocationService.StartLocationUpdates();
             _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
             _SignalStrengthService.ServiceCallback = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
-
         }
 
         private void translate(DashboardViewModel oldObj, ILocation newObj)

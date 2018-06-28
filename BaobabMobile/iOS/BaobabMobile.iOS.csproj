@@ -100,6 +100,9 @@
     <PackageReference Include="RestSharp">
       <Version>106.3.1</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.Connectivity">
+      <Version>3.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />

@@ -14,6 +14,7 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
         public string ServiceKey => "TelephonyService";
         TelephonyManager _telephonyManager;
         GsmSignalStrengthListener _signalStrengthListener;
+        int signalStrength;
 
         public SignalStrengthService()
         {
@@ -25,13 +26,9 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
 
         public Action<ISignalStrength> ServiceCallback { get; set; }
 
-        public async Task GetSignalStrength()
-        {
-            await Task.Run(() => { HandleSignalStrengthChanged(0); });
-        }
-
         void HandleSignalStrengthChanged(int strength)
         {
+            signalStrength = strength;
             ServiceCallback?.Invoke(new SignalStrength { Strength = strength });
         }
     }
