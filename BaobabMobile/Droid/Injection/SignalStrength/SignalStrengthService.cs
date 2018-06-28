@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Android.Telephony;
 using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.SignalStrength;

@@ -94,6 +94,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\SignalStrengthUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\ISignalStrength.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\IDeviceMovementService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\IDeviceMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -110,5 +112,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\" />
   </ItemGroup>
 </Project>

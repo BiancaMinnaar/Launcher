@@ -106,6 +106,9 @@
     <PackageReference Include="Uhuru.Plugin.Geolocation">
       <Version>1.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.DeviceMotion">
+      <Version>1.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -131,6 +134,8 @@
     <Compile Include="Injection\Base\PlatformBonsai.cs" />
     <Compile Include="Injection\SignalStrength\GsmSignalStrengthListener.cs" />
     <Compile Include="Injection\Base\ServiceBonsai.cs" />
+    <Compile Include="Injection\Movement\DeviceMovementService.cs" />
+    <Compile Include="Injection\Movement\DeviceMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -149,6 +154,7 @@
     <Folder Include="Injection\Rest\" />
     <Folder Include="Injection\SignalStrength\" />
     <Folder Include="Injection\Base\" />
+    <Folder Include="Injection\Movement\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
