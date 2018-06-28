@@ -34,6 +34,10 @@
                         <Label Text="SignalStrength" />
                         <Label Text="{Binding SignalStrength}" />
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="MovementX" />
+                        <Label Text="{Binding MotionVectorX}" />
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="Minimize" Clicked="On_Minimize_Event" />
