@@ -21,6 +21,5 @@ namespace BaobabMobile.iOS.Injection.SignalStrength
         {
             ServiceCallBack?.Invoke(new SignalStrength { Strength = e.IsConnected ? 1 : 0 });
         }
-
     }
 }

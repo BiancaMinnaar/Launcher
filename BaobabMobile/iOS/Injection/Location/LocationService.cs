@@ -45,6 +45,5 @@ namespace BaobabMobile.iOS.Injection
         {
             ServiceCallBack?.Invoke(new Location { Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude });
         }
-
     }
 }
