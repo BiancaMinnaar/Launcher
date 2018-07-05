@@ -92,7 +92,7 @@ namespace BaobabMobile.Root.ViewController
                 var toastOptions = new ToastConfig(message);
                 toastOptions.SetDuration(TimeSpan.FromSeconds(5));
                 toastOptions.SetBackgroundColor(System.Drawing.Color.Red);
-                toastOptions.SetPosition(ToastPosition.Bottom);
+                //toastOptions.SetPosition(ToastPosition.Bottom);
                 toastOptions.SetMessageTextColor(System.Drawing.Color.White);
 
                 UserDialogs.Instance.Toast(message, TimeSpan.FromSeconds(5));
@@ -111,7 +111,7 @@ namespace BaobabMobile.Root.ViewController
                 var toastOptions = new ToastConfig(message);
                 toastOptions.SetDuration(TimeSpan.FromSeconds(5));
                 toastOptions.SetBackgroundColor(System.Drawing.Color.Red);
-                toastOptions.SetPosition(ToastPosition.Bottom);
+                //toastOptions.SetPosition(ToastPosition.Bottom);
                 toastOptions.SetMessageTextColor(System.Drawing.Color.White);
 
                 UserDialogs.Instance.Toast(toastOptions);

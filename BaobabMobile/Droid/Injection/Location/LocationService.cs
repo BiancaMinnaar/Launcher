@@ -7,7 +7,7 @@ using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Location;
 using BaseBonsai.DataContracts;
-using Plugin.Geolocation;
+using Plugin.Geolocator;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
@@ -34,7 +34,7 @@ namespace BaobabMobile.Droid.Injection.Location
             {
                 try
                 {
-                    var locator = CrossGeolocation.Current;
+                    var locator = CrossGeolocator.Current;
                     locator.DesiredAccuracy = 100;
 
                     var position = await locator.GetPositionAsync();
