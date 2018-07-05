@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Location;
+using BaseBonsai.DataContracts;
 using CoreLocation;
 using UIKit;
 using Xamarin.Forms;
@@ -9,7 +9,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.iOS.Injection
 {
-    public class LocationService : ILocationService<ILocation>
+    public class LocationService : PlatformServiceBonsai<ILocation>, ILocationService<ILocation>
     {
         protected CLLocationManager locationManager;
 
@@ -20,11 +20,9 @@ namespace BaobabMobile.iOS.Injection
                 PausesLocationUpdatesAutomatically = false
             };
 
-            // iOS 8 has additional permissions requirements
             if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
                 locationManager.RequestAlwaysAuthorization(); // works in background
-                //locMgr.RequestWhenInUseAuthorization (); // only in foreground
             }
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
@@ -33,21 +31,20 @@ namespace BaobabMobile.iOS.Injection
             }
         }
 
-        public Action<ILocation> ServiceCallback { get; set; }
-
         public async Task StartLocationUpdates()
         {
             if (CLLocationManager.LocationServicesEnabled)
             {
-                //set the desired accuracy, in meters
                 locationManager.DesiredAccuracy = 1;
-                locationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
-                {
-                    // fire our custom Location Updated event
-                    ServiceCallback?.Invoke(new Location {Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude});
-                };
+                locationManager.LocationsUpdated += LocationManager_LocationsUpdated;
                 await Task.Run(() => locationManager.StartUpdatingLocation());
             }
         }
+
+        void LocationManager_LocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)
+        {
+            ServiceCallBack?.Invoke(new Location { Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude });
+        }
+
     }
 }

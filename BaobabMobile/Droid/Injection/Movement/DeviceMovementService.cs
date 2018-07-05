@@ -2,6 +2,7 @@
 using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.Movement;
 using BaobabMobile.Trunk.Injection.Movement;
+using BaseBonsai.DataContracts;
 using DeviceMotion.Plugin;
 using DeviceMotion.Plugin.Abstractions;
 using Xamarin.Forms;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(DeviceMovementService))]
 namespace BaobabMobile.Droid.Injection.Movement
 {
-    public class DeviceMovementService : ServiceBonsai<IDeviceMovement>, IDeviceMovementService<IDeviceMovement>
+    public class DeviceMovementService : PlatformServiceBonsai<IDeviceMovement>, IDeviceMovementService<IDeviceMovement>
     {
         public DeviceMovementService()
         {

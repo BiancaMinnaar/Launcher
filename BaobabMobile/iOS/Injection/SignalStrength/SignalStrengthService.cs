@@ -1,30 +1,26 @@
 ﻿using System;
 using BaobabMobile.iOS.Injection.SignalStrength;
 using BaobabMobile.Trunk.Injection.SignalStrength;
+using BaseBonsai.DataContracts;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SignalStrengthService))]
 namespace BaobabMobile.iOS.Injection.SignalStrength
 {
-    public class SignalStrengthService : ISignalStrengthService<ISignalStrength>
+    public class SignalStrengthService : PlatformServiceBonsai<ISignalStrength>, ISignalStrengthService<ISignalStrength>
     {
-        public Action<ISignalStrength> ServiceCallback { get; set; }
-        int signalStrength;
-
         public SignalStrengthService()
         {
             var speeds = CrossConnectivity.Current.Bandwidths;
             var connectionTypes = CrossConnectivity.Current.ConnectionTypes;
-            CrossConnectivity.Current.ConnectivityChanged += (sender, e) =>
-            { HandleSignalStrengthChanged(CrossConnectivity.Current.IsConnected ? 1 : 0); };
-            HandleSignalStrengthChanged(CrossConnectivity.Current.IsConnected ? 1 : 0);
+            CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
         }
 
-        void HandleSignalStrengthChanged(int strength)
+        void Current_ConnectivityChanged(object sender, Plugin.Connectivity.Abstractions.ConnectivityChangedEventArgs e)
         {
-            signalStrength = strength;
-            ServiceCallback?.Invoke(new SignalStrength { Strength = strength });
+            ServiceCallBack?.Invoke(new SignalStrength { Strength = e.IsConnected ? 1 : 0 });
         }
+
     }
 }

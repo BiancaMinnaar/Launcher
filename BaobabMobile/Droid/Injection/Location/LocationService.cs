@@ -4,16 +4,16 @@ using Android;
 using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
-using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Location;
+using BaseBonsai.DataContracts;
 using Plugin.Geolocation;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.Droid.Injection.Location
 {
-    public class LocationService : ServiceBonsai<ILocation>, ILocationService<ILocation>
+    public class LocationService : PlatformServiceBonsai<ILocation>, ILocationService<ILocation>
     {
         Context context = Android.App.Application.Context;
         bool isRequestingLocationUpdates;
