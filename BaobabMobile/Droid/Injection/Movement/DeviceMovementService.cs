@@ -1,4 +1,5 @@
 ﻿using System;
+using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.Movement;
 using BaobabMobile.Trunk.Injection.Movement;
 using DeviceMotion.Plugin;
@@ -8,7 +9,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(DeviceMovementService))]
 namespace BaobabMobile.Droid.Injection.Movement
 {
-    public class DeviceMovementService : IDeviceMovementService<IDeviceMovement>
+    public class DeviceMovementService : ServiceBonsai<IDeviceMovement>, IDeviceMovementService<IDeviceMovement>
     {
         public DeviceMovementService()
         {
@@ -26,11 +27,10 @@ namespace BaobabMobile.Droid.Injection.Movement
             };
         }
 
-        public Action<IDeviceMovement> ServiceCallback { get; set; }
 
         void HandleServiceReturn(double x, double y, double z, double? compassReading)
         {
-            ServiceCallback?.Invoke(new DeviceMovement { MotionVectorX = x, MotionVectorY=y, MotionVectorZ=z, CompassValue=compassReading.GetValueOrDefault() });
+            ServiceCallBack?.Invoke(new DeviceMovement { MotionVectorX = x, MotionVectorY=y, MotionVectorZ=z, CompassValue=compassReading.GetValueOrDefault() });
         }
     }
 }

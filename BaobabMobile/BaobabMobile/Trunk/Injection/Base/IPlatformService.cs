@@ -3,6 +3,6 @@ namespace BaobabMobile.Trunk.Injection.Base
 {
     public interface IPlatformService<T>
     {
-        Action<T> ServiceCallback { get; set; }
+        Action<T> ServiceCallBack { get; set; }
     }
 }

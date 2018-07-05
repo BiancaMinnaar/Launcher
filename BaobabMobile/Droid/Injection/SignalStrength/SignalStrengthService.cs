@@ -8,27 +8,23 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SignalStrengthService))]
 namespace BaobabMobile.Droid.Injection.SignalStrength
 {
-    public class SignalStrengthService : ISignalStrengthService<ISignalStrength>
+    public class SignalStrengthService : ServiceBonsai<ISignalStrength>, ISignalStrengthService<ISignalStrength>
     {
-        public string ServiceKey => "TelephonyService";
-        TelephonyManager _telephonyManager;
-        GsmSignalStrengthListener _signalStrengthListener;
-        int signalStrength;
+        public override string ServiceKey => "TelephonyService";
 
         public SignalStrengthService()
         {
-            _telephonyManager = (TelephonyManager)PlatformBonsai.Instance.PlatformServiceList[ServiceKey];
-            _signalStrengthListener = new GsmSignalStrengthListener();
+            Java.Lang.Object val;
+            var _telephonyManager = (PlatformBonsai.Instance.PlatformServiceList.TryGetValue(ServiceKey, out val))?
+                (TelephonyManager)val:null;
+            var _signalStrengthListener = new GsmSignalStrengthListener();
             _signalStrengthListener.SignalStrengthChanged += HandleSignalStrengthChanged;
             _telephonyManager.Listen(_signalStrengthListener, PhoneStateListenerFlags.SignalStrengths);
         }
 
-        public Action<ISignalStrength> ServiceCallback { get; set; }
-
         void HandleSignalStrengthChanged(int strength)
         {
-            signalStrength = strength;
-            ServiceCallback?.Invoke(new SignalStrength { Strength = strength });
+            ServiceCallBack?.Invoke(new SignalStrength { Strength = strength });
         }
     }
 }

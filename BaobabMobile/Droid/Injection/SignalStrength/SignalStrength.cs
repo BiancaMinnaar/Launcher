@@ -1,5 +1,4 @@
-﻿using System;
-using BaobabMobile.Trunk.Injection.SignalStrength;
+﻿using BaobabMobile.Trunk.Injection.SignalStrength;
 
 namespace BaobabMobile.Droid.Injection.SignalStrength
 {

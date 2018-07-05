@@ -26,7 +26,7 @@ namespace BaobabMobile.Implementation.Repository
         {
             _Service = service;
             _LocationService = DependencyService.Get<ILocationService<ILocation>>();
-            _LocationService.ServiceCallback = (location) =>
+            _LocationService.ServiceCallBack = (location) =>
             {
                 model.Lat = location.Lat;
                 model.Lon = location.Lon;
@@ -34,9 +34,9 @@ namespace BaobabMobile.Implementation.Repository
             _Model = model;
             _LocationService.StartLocationUpdates();
             _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
-            _SignalStrengthService.ServiceCallback = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
+            _SignalStrengthService.ServiceCallBack = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
             _MovementService = DependencyService.Get<IDeviceMovementService<IDeviceMovement>>();
-            _MovementService.ServiceCallback = (movment) => 
+            _MovementService.ServiceCallBack = (movment) => 
             {
                 model.MotionVectorX = movment.MotionVectorX;
                 model.MotionVectorY = movment.MotionVectorY;

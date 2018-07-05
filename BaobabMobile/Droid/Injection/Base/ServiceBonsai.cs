@@ -1,17 +1,15 @@
 ﻿using System;
-using Android.Content;
 
 namespace BaobabMobile.Droid.Injection.Base
 {
-    public class ServiceBonsai<T>
+    public abstract class ServiceBonsai<T>
     {
-        public readonly Action<T> _ServiceCallback;
-        protected Context _Context;
-
-        public ServiceBonsai(Action<T> serviceCallback)
+        public virtual string ServiceKey { get; }
+        private Action<T> _ServiceCallback;
+        public Action<T> ServiceCallBack
         {
-            _ServiceCallback = serviceCallback;
-            _Context = Android.App.Application.Context;
+            get => _ServiceCallback;
+            set => _ServiceCallback = value;
         }
     }
 }

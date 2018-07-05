@@ -4,6 +4,7 @@ using Android;
 using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
+using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Location;
 using Plugin.Geolocation;
@@ -12,7 +13,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.Droid.Injection.Location
 {
-    public class LocationService : ILocationService<ILocation>
+    public class LocationService : ServiceBonsai<ILocation>, ILocationService<ILocation>
     {
         Context context = Android.App.Application.Context;
         bool isRequestingLocationUpdates;
@@ -27,8 +28,6 @@ namespace BaobabMobile.Droid.Injection.Location
             }
         }
 
-        public Action<ILocation> ServiceCallback { get; set; }
-
         public async Task StartLocationUpdates()
         {
             if (isRequestingLocationUpdates)
@@ -42,7 +41,7 @@ namespace BaobabMobile.Droid.Injection.Location
 
                     if (position != null)
                     {
-                        ServiceCallback?.Invoke(new Location { Lat = position.Latitude, Lon = position.Longitude });
+                        ServiceCallBack?.Invoke(new Location { Lat = position.Latitude, Lon = position.Longitude });
                     }
 
                     if (!locator.IsGeolocationEnabled)
