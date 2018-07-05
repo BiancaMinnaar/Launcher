@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -81,6 +81,16 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         public void PushDashboardView()
         {
             _Navigation.PushAsync(new DashboardView());
+        }
+
+        public void ShowMenu()
+        {
+            _Navigation.PushModalAsync(new MainMenuView());
+        }
+
+        public void CloseMenu()
+        {
+            _Navigation.PopModalAsync();
         }
     }
 }

@@ -17,10 +17,20 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <StackLayout HeightRequest="20"></StackLayout>
+            <StackLayout HeightRequest="40"></StackLayout>
             <StackLayout Orientation="Vertical">
+                <!--Hamburger-->
+                <StackLayout Orientation="Horizontal" BackgroundColor="Blue">
+                    <StackLayout HorizontalOptions="StartAndExpand" />
+                    <Image VerticalOptions="End" Source="{b:ImageResource BaobabMobile.Images.General.menu.png}" WidthRequest="18" HeightRequest="24">
+                        <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                        Tapped="OnMenuTapped" />
+                          </Image.GestureRecognizers>
+                        </Image>
+                </StackLayout>
+                <!--Detail-->
                 <StackLayout Orientation="Vertical">
-                    <!--Detail-->
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Lat" />
                         <Label Text="{Binding Lat}" />
@@ -38,9 +48,6 @@
                         <Label Text="MovementX" />
                         <Label Text="{Binding MotionVectorX}" />
                     </StackLayout>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Minimize" Clicked="On_Minimize_Event" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>

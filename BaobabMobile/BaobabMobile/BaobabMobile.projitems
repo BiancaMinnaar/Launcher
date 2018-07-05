@@ -26,6 +26,13 @@
       <SubType>Designer</SubType>
       <Generator>Generator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\General\menu.png">
+      <LogicalName>BaobabMobile.Images.General.menu.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Trunk\View\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>Generator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Root\CheckAndBalance.cs" />
@@ -96,6 +103,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\IDeviceMovementService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\IDeviceMovement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\View\ImageResourceExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\MainMenuViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\View\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\IMainMenuViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\Implementation\MainMenuViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\IMainMenuRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\MainMenuRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IMainMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\MainMenuService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -113,5 +131,10 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Images\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Images\General\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Images\General\Menu.svg" />
   </ItemGroup>
 </Project>

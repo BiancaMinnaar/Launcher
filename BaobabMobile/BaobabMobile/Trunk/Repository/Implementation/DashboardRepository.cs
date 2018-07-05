@@ -25,24 +25,24 @@ namespace BaobabMobile.Implementation.Repository
             : base(masterRepository)
         {
             _Service = service;
-            _LocationService = DependencyService.Get<ILocationService<ILocation>>();
-            _LocationService.ServiceCallBack = (location) =>
-            {
-                model.Lat = location.Lat;
-                model.Lon = location.Lon;
-            };
-            _Model = model;
-            _LocationService.StartLocationUpdates();
-            _SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
-            _SignalStrengthService.ServiceCallBack = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
-            _MovementService = DependencyService.Get<IDeviceMovementService<IDeviceMovement>>();
-            _MovementService.ServiceCallBack = (movment) => 
-            {
-                model.MotionVectorX = movment.MotionVectorX;
-                model.MotionVectorY = movment.MotionVectorY;
-                model.MotionVectorZ = movment.MotionVectorZ;
-                model.CompassValue = movment.CompassValue;
-            };
+            //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
+            //_LocationService.ServiceCallBack = (location) =>
+            //{
+            //    model.Lat = location.Lat;
+            //    model.Lon = location.Lon;
+            //};
+            //_Model = model;
+            //_LocationService.StartLocationUpdates();
+            //_SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
+            //_SignalStrengthService.ServiceCallBack = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
+            //_MovementService = DependencyService.Get<IDeviceMovementService<IDeviceMovement>>();
+            //_MovementService.ServiceCallBack = (movment) => 
+            //{
+            //    model.MotionVectorX = movment.MotionVectorX;
+            //    model.MotionVectorY = movment.MotionVectorY;
+            //    model.MotionVectorZ = movment.MotionVectorZ;
+            //    model.CompassValue = movment.CompassValue;
+            //};
         }
 
         private void translate(DashboardViewModel oldObj, ILocation newObj)

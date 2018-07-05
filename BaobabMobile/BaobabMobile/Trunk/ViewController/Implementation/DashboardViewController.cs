@@ -28,9 +28,9 @@ namespace BaobabMobile.Implementation.ViewController
             });  
         }
 
-        public void Minimize()
+        public void ShowMenu()
         {
-            _Reposetory.Minimize();
+            _MasterRepo.ShowMenu();
         }
     }
 }

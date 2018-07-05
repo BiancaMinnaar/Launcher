@@ -1,6 +1,4 @@
-﻿using System;
-using BaobabMobile.Droid.Injection.Base;
-using BaobabMobile.Droid.Injection.Movement;
+﻿using BaobabMobile.Droid.Injection.Movement;
 using BaobabMobile.Trunk.Injection.Movement;
 using BaseBonsai.DataContracts;
 using DeviceMotion.Plugin;
@@ -27,7 +25,6 @@ namespace BaobabMobile.Droid.Injection.Movement
                 }
             };
         }
-
 
         void HandleServiceReturn(double x, double y, double z, double? compassReading)
         {

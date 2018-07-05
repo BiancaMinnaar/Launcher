@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using BaobabMobile.Implementation.ViewController;
 using BaobabMobile.Implementation.ViewModel;
 using BaobabMobile.Root.View;
@@ -6,9 +6,9 @@ using Xamarin.Forms;
 
 namespace BaobabMobile.Implementation.View
 {
-    public partial class DashboardView : ProjectBaseContentPage<DashboardViewController, DashboardViewModel>
+    public partial class MainMenuView : ProjectBaseContentPage<MainMenuViewController, MainMenuViewModel>
     {
-        public DashboardView()
+        public MainMenuView()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -19,22 +19,14 @@ namespace BaobabMobile.Implementation.View
         {
         }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-            On_Refresh_Event(this, null);
-
-		}
-
-		public void On_Refresh_Event(object sender, EventArgs e)
+        public async void On_Load_Event(object sender, EventArgs e)
         {
-            _ViewController.Refresh();
-
+            await _ViewController.Load();
         }
 
-        public void OnMenuTapped(object sender, EventArgs e)
+        void HandleCloseClicked(object sender, System.EventArgs e)
         {
-            _ViewController.ShowMenu();
+            _ViewController.CloseMenu();
         }
     }
 }

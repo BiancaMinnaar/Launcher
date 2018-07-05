@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:ProjectBaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:BaobabMobile.Root.View"
+    xmlns:m="clr-namespace:BaobabMobile.Implementation.ViewModel"
+    xmlns:p="clr-namespace:BaobabMobile.Implementation.ViewController"
+    xmlns:b="clr-namespace:BaobabMobile.Implementation.View"
+    xmlns:svg="clr-namespace:TwinTechsForms.NControl;assembly=TwinTechsForms.NControl.SvgImageView"
+    xmlns:image="clr-namespace:MobileBonsai.View"
+    x:Class="BaobabMobile.Implementation.View.MainMenuView" 
+    x:TypeArguments="p:MainMenuViewController, m:MainMenuViewModel" 
+    BackgroundColor="#565E60"
+    Title="Login" HeightRequest="400">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <image:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout HeightRequest="30"/>
+            <Button Text="Close" Clicked="HandleCloseClicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ProjectBaseContentPage>
