@@ -14,6 +14,7 @@ using BaobabMobile.Trunk.Injection.Location;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Interface.Service;
 using BaobabMobile.Implementation.ViewModel;
+using BaobabMobile.Implementation.Service;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
 {
@@ -88,20 +89,19 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
-        public void PerformBackground()
+        public void PerformBackground(ITrackLocationService<TrackLocationViewModel> trackLocationService)
         {
-            ITrackLocationService<TrackLocationViewModel> _trackLocationService = 
-                DependencyService.Get<ITrackLocationService<TrackLocationViewModel>>();
             ILocationService<ILocation> _LocationService;
             _LocationService = DependencyService.Get<ILocationService<ILocation>>();
             _LocationService.ServiceCallBack = (location) =>
             {
-                _trackLocationService.TrackLocation(new TrackLocationViewModel
+                trackLocationService.TrackLocation(new TrackLocationViewModel
                 {
                     Lat = location.Lat,
                     Lon = location.Lon
                 });
             };
+            _LocationService.StartLocationUpdates();
         }
 
         public void PushDashboardView()

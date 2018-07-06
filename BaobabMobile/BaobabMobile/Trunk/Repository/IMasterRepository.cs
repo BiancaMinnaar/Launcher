@@ -1,3 +1,5 @@
+using BaobabMobile.Implementation.ViewModel;
+using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.ViewModel;
 using Xamarin.Forms;
 
@@ -14,7 +16,7 @@ namespace BaobabMobile.Interface.Repository
         void ShowLoading();
         void HideLoading();
         void DumpJson<T>(string heading, T objectToDump);
-        void PerformBackground();
+        void PerformBackground(ITrackLocationService<TrackLocationViewModel> trackLocationService);
         void PushDashboardView();
         void ShowMenu();
         void CloseMenu();

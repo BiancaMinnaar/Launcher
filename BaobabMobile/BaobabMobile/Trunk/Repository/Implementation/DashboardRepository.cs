@@ -23,7 +23,11 @@ namespace BaobabMobile.Implementation.Repository
         IDeviceMovementService<IDeviceMovement> _MovementService;
         IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
-        public DashboardRepository(IMasterRepository masterRepository, IDashboardService<T> service, DashboardViewModel model)
+        public DashboardRepository(
+            IMasterRepository masterRepository, 
+            IDashboardService<T> service, 
+            ITrackLocationService<TrackLocationViewModel> trackLocationService,
+            DashboardViewModel model)
             : base(masterRepository)
         {
             _Service = service;
@@ -32,7 +36,8 @@ namespace BaobabMobile.Implementation.Repository
             {
                 _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
                 _MasterRepo.DataSource.IsInBackground = platformModel.IsInBackground;
-                _MasterRepo.PerformBackground();
+                _MasterRepo.PerformBackground(trackLocationService);
+
             };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>

@@ -7,13 +7,13 @@ using BaobabMobile.Interface.Service;
 
 namespace BaobabMobile.Implementation.Service
 {
-        public class TrackLocationService<T> : BaseService<T>, ITrackLocationService<T>
-            where T : BaseViewModel
+    public class TrackLocationService<T> : BaseService<T>, ITrackLocationService<T>
+        where T : BaseViewModel
+    {
+        public TrackLocationService(Func<string, Dictionary<string, ParameterTypedValue>, BaseViewModel, BaseNetworkAccessEnum, Task<T>> networkInterface)
+            :base(networkInterface)
         {
-            public TrackLocationService(Func<string, Dictionary<string, ParameterTypedValue>, BaseViewModel, BaseNetworkAccessEnum, Task<T>> networkInterface)
-                :base(networkInterface)
-            {
-            }
+        }
 
         public async Task<T> TrackLocation(TrackLocationViewModel model)
         {

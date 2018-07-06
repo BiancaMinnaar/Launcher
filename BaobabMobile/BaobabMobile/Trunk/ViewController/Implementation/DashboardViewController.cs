@@ -13,12 +13,16 @@ namespace BaobabMobile.Implementation.ViewController
     {
         IDashboardRepository<DashboardViewModel> _Reposetory;
         IDashboardService<DashboardViewModel> _Service;
+        ITrackLocationService<TrackLocationViewModel> _TrackLocationService;
 
         public override void SetRepositories()
         {
             _Service = new DashboardService<DashboardViewModel>((U, P, C, A) => 
                                                            ExecuteQueryWithReturnTypeAndNetworkAccessAsync<DashboardViewModel>(U, P, C, A));
-            _Reposetory = new DashboardRepository<DashboardViewModel>(_MasterRepo, _Service, InputObject);
+            _TrackLocationService = new TrackLocationService<TrackLocationViewModel>((U, P, C, A) =>
+                                                                                     ExecuteQueryWithReturnTypeAndNetworkAccessAsync<TrackLocationViewModel>(U, P, C, A));
+            _Reposetory = new DashboardRepository<DashboardViewModel>(
+                _MasterRepo, _Service, _TrackLocationService, InputObject);
         }
 
         public void Refresh()
