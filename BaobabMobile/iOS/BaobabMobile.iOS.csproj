@@ -120,6 +120,8 @@
     <Compile Include="Injection\SignalStrength\SignalStrength.cs" />
     <Compile Include="Injection\Background\BackgroundModel.cs" />
     <Compile Include="Injection\Background\BackgroundService.cs" />
+    <Compile Include="Injection\Base\PlatformBonsai.cs" />
+    <Compile Include="Injection\Base\PlatformModelBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -144,6 +146,7 @@
     <Folder Include="Injection\SignalStrength\" />
     <Folder Include="Injection\Movement\" />
     <Folder Include="Injection\Background\" />
+    <Folder Include="Injection\Base\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
