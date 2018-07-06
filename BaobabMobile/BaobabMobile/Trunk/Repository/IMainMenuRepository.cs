@@ -9,5 +9,6 @@ namespace BaobabMobile.Interface.Repository
         where T : BaseViewModel
     {
         Task Load(MainMenuViewModel model, Action<T> completeAction);
+        void SendToBackground();
     }
 }

@@ -9,6 +9,7 @@ using BaobabMobile.Trunk.Injection.Location;
 using Xamarin.Forms;
 using BaobabMobile.Trunk.Injection.SignalStrength;
 using BaobabMobile.Trunk.Injection.Movement;
+using BaobabMobile.Trunk.Injection.Base;
 
 namespace BaobabMobile.Implementation.Repository
 {
@@ -20,11 +21,18 @@ namespace BaobabMobile.Implementation.Repository
         ILocationService<ILocation> _LocationService;
         ISignalStrengthService<ISignalStrength> _SignalStrengthService;
         IDeviceMovementService<IDeviceMovement> _MovementService;
+        IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
         public DashboardRepository(IMasterRepository masterRepository, IDashboardService<T> service, DashboardViewModel model)
             : base(masterRepository)
         {
             _Service = service;
+            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
+            _PlatformBonsai.ServiceCallBack = (platformModel) =>
+            {
+                _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
+                _MasterRepo.DataSource.IsInBackground = platformModel.IsInBackground;
+            };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>
             //{

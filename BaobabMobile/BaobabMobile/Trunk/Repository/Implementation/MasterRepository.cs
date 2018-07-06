@@ -17,7 +17,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
     {
         private static MasterRepository _Reposetory = new MasterRepository();
         private static readonly object syncronisationLock = new object();
-        public MasterModel DataSorce { get; set; }
+        public MasterModel DataSource { get; set; }
         private INavigation _Navigation;
         private Page _RootView;
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
@@ -26,7 +26,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         MasterRepository()
             : base(null)
         {
-            DataSorce = new MasterModel();
+            DataSource = new MasterModel();
         }
 
         public static MasterRepository MasterRepo
@@ -48,7 +48,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
 
         public void PushLogOut()
         {
-            DataSorce.Authenticated = false;
+            DataSource.Authenticated = false;
             _Navigation.PopToRootAsync();
         }
 

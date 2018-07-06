@@ -1,9 +1,11 @@
+using BaobabMobile.Root.ViewModel;
 using Xamarin.Forms;
 
 namespace BaobabMobile.Interface.Repository
 {
     public interface IMasterRepository
     {
+        MasterModel DataSource { get; set; }
         void SetRootView(Page rootView);
         Page GetRootView();
         void PushLogOut();

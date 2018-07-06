@@ -2,5 +2,6 @@
 {
     public interface IPlatformBonsai<T> : IPlatformService<T> where T : IPlatformModelBonsai
     {
+        void SentToBackground();
     }
 }

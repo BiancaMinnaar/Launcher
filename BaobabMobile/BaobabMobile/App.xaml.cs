@@ -22,7 +22,7 @@ namespace BaobabMobile
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            
         }
 
         protected override void OnResume()
