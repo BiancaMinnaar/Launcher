@@ -32,6 +32,7 @@ namespace BaobabMobile.Implementation.Repository
             {
                 _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
                 _MasterRepo.DataSource.IsInBackground = platformModel.IsInBackground;
+                _MasterRepo.PerformBackground();
             };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>

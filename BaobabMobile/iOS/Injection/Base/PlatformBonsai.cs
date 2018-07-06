@@ -7,35 +7,39 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(PlatformBonsai))]
 namespace BaobabMobile.iOS.Injection.Base
 {
+    public sealed class PlatformSingelton
+    {
+        static readonly Lazy<PlatformSingelton> lazy = new Lazy<PlatformSingelton>(
+            () => new PlatformSingelton());
+        public IPlatformModelBonsai Model { get; set; }
+        public Action<IPlatformModelBonsai> ServiceCallBack;
+
+        public static PlatformSingelton Instance { get { return lazy.Value; } }
+
+        private PlatformSingelton()
+        {
+            Model = new PlatformModelBonsai();
+        }
+    }
+
     public sealed class PlatformBonsai : PlatformServiceBonsai<IPlatformModelBonsai>, IPlatformBonsai<IPlatformModelBonsai>
     {
-        static readonly Lazy<PlatformBonsai> lazy = new Lazy<PlatformBonsai>(
-            () => new PlatformBonsai());
-        IPlatformModelBonsai model;
-        Action _PerformBackground;
-
-        public static PlatformBonsai Instance { get { return lazy.Value; } }
-
-        public PlatformBonsai()
+        public new Action<IPlatformModelBonsai> ServiceCallBack
         {
-            model = new PlatformModelBonsai();
-        }
-
-        public static void SetPerformBackground(Action performBackground)
-        {
-            Instance._PerformBackground = performBackground;
-        }
-
-        public void SentToBackground()//Against Aple Guidlines
-        {
-            Instance._PerformBackground?.Invoke();
+            get => PlatformSingelton.Instance.ServiceCallBack;
+            set => PlatformSingelton.Instance.ServiceCallBack = value;
         }
 
         public static void NotifyOfBackgroundChange(IPlatformModelBonsai model)
         {
-            Instance.model.IsBackgroundAvailable = model.IsBackgroundAvailable;
-            Instance.model.IsInBackground = model.IsInBackground;
-            Instance.ServiceCallBack?.Invoke(Instance.model);
+            PlatformSingelton.Instance.Model.IsBackgroundAvailable = model.IsBackgroundAvailable;
+            PlatformSingelton.Instance.Model.IsInBackground = model.IsInBackground;
+            PlatformSingelton.Instance.ServiceCallBack?.Invoke(PlatformSingelton.Instance.Model);
+        }
+
+        public void SentToBackground()
+        {
+            throw new NotImplementedException();
         }
     }
 }

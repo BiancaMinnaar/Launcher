@@ -1,5 +1,4 @@
-﻿using System;
-using BaobabMobile.iOS.Injection.SignalStrength;
+﻿using BaobabMobile.iOS.Injection.SignalStrength;
 using BaobabMobile.Trunk.Injection.SignalStrength;
 using BaseBonsai.DataContracts;
 using Plugin.Connectivity;

@@ -17,11 +17,12 @@ namespace BaobabMobile.Implementation.Service
 
         public async Task<T> TrackLocation(TrackLocationViewModel model)
         {
-            string requestURL = "/path/{Parameter}";
-            var httpMethod = BaseNetworkAccessEnum.Get;
+            string requestURL = "/location";
+            var httpMethod = BaseNetworkAccessEnum.Post;
             var parameters = new Dictionary<string, ParameterTypedValue>()
             {
-                //{"Parameter", model.Property},
+                {"Lat", new ParameterTypedValue(model.Lat.ToString())},
+                {"Lon", new ParameterTypedValue(model.Lon.ToString())}
             };
             return await _NetworkInterface(requestURL, parameters, null, httpMethod);
         }

@@ -10,6 +10,10 @@ using BaobabMobile.Root.ViewModel;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using BaobabMobile.Implementation.View;
+using BaobabMobile.Trunk.Injection.Location;
+using BaobabMobile.Trunk.Injection.Base;
+using BaobabMobile.Interface.Service;
+using BaobabMobile.Implementation.ViewModel;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
 {
@@ -22,11 +26,18 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         private Page _RootView;
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
         public Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> NetworkInterfaceWithTypedParameters { get; set; }
+        IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
         MasterRepository()
             : base(null)
         {
             DataSource = new MasterModel();
+            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
+            _PlatformBonsai.ServiceCallBack = (platformModel) =>
+            {
+                DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
+                DataSource.IsInBackground = platformModel.IsInBackground;
+            };
         }
 
         public static MasterRepository MasterRepo
@@ -38,7 +49,6 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         {
             _RootView = rootView;
             _Navigation = rootView.Navigation;
-            
         }
 
         public Page GetRootView()
@@ -76,6 +86,22 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         {
             Debug.WriteLine(heading);
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
+        }
+
+        public void PerformBackground()
+        {
+            ITrackLocationService<TrackLocationViewModel> _trackLocationService = 
+                DependencyService.Get<ITrackLocationService<TrackLocationViewModel>>();
+            ILocationService<ILocation> _LocationService;
+            _LocationService = DependencyService.Get<ILocationService<ILocation>>();
+            _LocationService.ServiceCallBack = (location) =>
+            {
+                _trackLocationService.TrackLocation(new TrackLocationViewModel
+                {
+                    Lat = location.Lat,
+                    Lon = location.Lon
+                });
+            };
         }
 
         public void PushDashboardView()
