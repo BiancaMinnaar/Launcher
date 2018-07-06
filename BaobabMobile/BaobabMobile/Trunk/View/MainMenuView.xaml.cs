@@ -28,6 +28,11 @@ namespace BaobabMobile.Implementation.View
         {
             _ViewController.CloseMenu();
         }
+
+        void Background_Clicked(object sender, System.EventArgs e)
+        {
+            _ViewController.ShowMessage("Implement Background");
+        }
     }
 }
 

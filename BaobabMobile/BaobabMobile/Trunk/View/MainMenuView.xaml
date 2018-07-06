@@ -21,6 +21,10 @@
         <StackLayout Orientation="Vertical">
             <StackLayout HeightRequest="30"/>
             <Button Text="Close" Clicked="HandleCloseClicked"></Button>
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <StackLayout VerticalOptions="StartAndExpand"></StackLayout>
+                <Button Text="Background" Clicked="Background_Clicked" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </base:ProjectBaseContentPage>
