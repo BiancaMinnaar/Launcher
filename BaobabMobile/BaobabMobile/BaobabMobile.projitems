@@ -116,6 +116,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\MainMenuService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\IBackgroundModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\IBackgroundService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformModelBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
