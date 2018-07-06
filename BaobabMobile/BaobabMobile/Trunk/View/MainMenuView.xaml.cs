@@ -35,5 +35,3 @@ namespace BaobabMobile.Implementation.View
         }
     }
 }
-
-

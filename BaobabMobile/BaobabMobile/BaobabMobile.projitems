@@ -114,6 +114,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\MainMenuRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IMainMenuService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\MainMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\IBackgroundModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\IBackgroundService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -133,6 +135,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Movement\" />
     <Folder Include="$(MSBuildThisFileDirectory)Images\" />
     <Folder Include="$(MSBuildThisFileDirectory)Images\General\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Images\General\Menu.svg" />
