@@ -10,5 +10,6 @@ namespace BaobabMobile.Interface.Repository
     {
         Task Refresh(DashboardViewModel model, Action<T> completeAction);
         void Minimize();
+        Action<string[]> OnError { get; set; }
     }
 }

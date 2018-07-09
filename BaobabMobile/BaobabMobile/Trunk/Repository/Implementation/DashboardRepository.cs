@@ -23,6 +23,9 @@ namespace BaobabMobile.Implementation.Repository
         IDeviceMovementService<IDeviceMovement> _MovementService;
         IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
+        Action<string[]> IDashboardRepository<T>.OnError 
+        { get; set; }
+
         public DashboardRepository(
             IMasterRepository masterRepository, 
             IDashboardService<T> service, 
@@ -32,7 +35,10 @@ namespace BaobabMobile.Implementation.Repository
         {
             _Service = service;
             _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
-
+            _PlatformBonsai.OnError = (obj) => 
+            {
+                OnError(obj);
+            };
             _PlatformBonsai.ServiceCallBack = (platformModel) =>
             {
                 _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;

@@ -1,3 +1,4 @@
+using System;
 using BaobabMobile.Implementation.ViewModel;
 using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.ViewModel;
@@ -20,5 +21,6 @@ namespace BaobabMobile.Interface.Repository
         void PushDashboardView();
         void ShowMenu();
         void CloseMenu();
+        Action<string[]> OnError { get; set; }
     }
 }

@@ -27,6 +27,13 @@ namespace BaobabMobile.Implementation.ViewController
 
         public void Refresh()
         {
+            _MasterRepo.OnError = (obj) => 
+            {
+                foreach(string error in obj)
+                {
+                    ShowError(error);
+                }
+            };
             _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => 
             {
             });

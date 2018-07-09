@@ -102,7 +102,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             };
             _LocationService.OnError = (errors) =>
             {
-                Errors = errors;
+                OnError?.Invoke(errors);
             };
             _LocationService.StartLocationUpdates();
         }

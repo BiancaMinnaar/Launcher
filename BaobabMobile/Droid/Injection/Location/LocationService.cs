@@ -10,6 +10,7 @@ using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Location;
 using CorePCL;
 using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
@@ -18,11 +19,11 @@ namespace BaobabMobile.Droid.Injection.Location
     public class LocationService : PlatformServiceBonsai<ILocation>, ILocationService<ILocation>
     {
         Context context = Android.App.Application.Context;
-        bool isRequestingLocationUpdates;
+        bool canRequestingLocationUpdates;
 
         public LocationService()
         {
-            isRequestingLocationUpdates = false;
+            canRequestingLocationUpdates = false;
             ValidationRules = new List<ValidationRule>
                 {
                 new ValidationRule
@@ -38,40 +39,37 @@ namespace BaobabMobile.Droid.Injection.Location
                 {
                     Check = () =>
                     {
-                        if (ValidationRules[0].Check() && !isRequestingLocationUpdates)
+                        if (ValidationRules[0].Check() && !canRequestingLocationUpdates)
                         {
-                            Task.Run(StartLocationUpdates);
-                            isRequestingLocationUpdates = true;
+                            canRequestingLocationUpdates = true;
                         }
 
-                        return isRequestingLocationUpdates;
+                        return canRequestingLocationUpdates;
                     },
                     ErrorMessage = "Not currently requesting location updates"
-                },
-                new ValidationRule
-                {
-                    Check = () =>
-                    {
-                        return CrossGeolocator.Current.IsGeolocationEnabled;
-                    },
-                    ErrorMessage = "Geo location isn't enabled on this device."
                 }
+                        //,
+                //new ValidationRule
+                //{
+                //    Check = () =>
+                //    {
+                //        return CrossGeolocator.Current.IsGeolocationEnabled;
+                //    },
+                //    ErrorMessage = "Geo location isn't enabled on this device."
+                //}
             };
         }
 
         public async Task StartLocationUpdates()
         {
+            var position = new Position();
             try
             {
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 100;
 
-                var position = await locator.GetPositionAsync();
+                position = await locator.GetPositionAsync();
 
-                if (position != null)
-                {
-                    ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
-                }
             }
             catch (Exception ex)
             {
@@ -80,6 +78,10 @@ namespace BaobabMobile.Droid.Injection.Location
                     Check = () => false,
                     ErrorMessage = ex.Message
                 });
+            }
+            finally
+            {
+                ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
             }
         }
     }

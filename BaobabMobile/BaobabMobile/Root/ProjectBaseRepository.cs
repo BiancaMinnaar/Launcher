@@ -8,7 +8,7 @@ namespace BaobabMobile.Root.Repository
     {
         protected IMasterRepository _MasterRepo;
         public string[] Errors { get; set; }
-        public Action<string[]> OnError { get; }
+        public Action<string[]> OnError { get; set; }
 
         public ProjectBaseRepository(IMasterRepository masterRepository)
         {
