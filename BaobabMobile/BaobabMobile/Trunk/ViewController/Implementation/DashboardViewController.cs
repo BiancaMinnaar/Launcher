@@ -29,7 +29,7 @@ namespace BaobabMobile.Implementation.ViewController
         {
             _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => 
             {
-            });  
+            });
         }
 
         public void ShowMenu()

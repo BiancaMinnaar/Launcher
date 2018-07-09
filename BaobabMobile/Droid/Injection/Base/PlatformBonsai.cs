@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using BaobabMobile.Droid.Injection.Base;
+using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Base;
-using BaseBonsai.DataContracts;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(PlatformBonsai))]

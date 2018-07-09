@@ -19,7 +19,7 @@ namespace BaobabMobile.iOS.Injection
         { 
             get { return RunValidationRules(); } 
         }
-        public Action<string[]> OnError;
+        public Action<string[]> OnError { get; set; }
 
         public PlatformServiceBonsai()
         {

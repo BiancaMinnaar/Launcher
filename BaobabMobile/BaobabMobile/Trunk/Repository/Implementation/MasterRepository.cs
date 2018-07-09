@@ -14,7 +14,6 @@ using BaobabMobile.Trunk.Injection.Location;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Interface.Service;
 using BaobabMobile.Implementation.ViewModel;
-using BaobabMobile.Implementation.Service;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
 {
@@ -100,6 +99,10 @@ namespace BaobabMobile.Trunk.Repository.Implementation
                     Lat = location.Lat,
                     Lon = location.Lon
                 });
+            };
+            _LocationService.OnError = (errors) =>
+            {
+                Errors = errors;
             };
             _LocationService.StartLocationUpdates();
         }

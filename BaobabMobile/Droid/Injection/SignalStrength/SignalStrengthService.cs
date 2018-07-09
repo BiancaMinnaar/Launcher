@@ -1,8 +1,8 @@
 ﻿using Android.Telephony;
 using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.SignalStrength;
+using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.SignalStrength;
-using BaseBonsai.DataContracts;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SignalStrengthService))]

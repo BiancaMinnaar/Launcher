@@ -75,6 +75,9 @@
     <PackageReference Include="Xam.Plugin.Geolocator">
       <Version>4.5.0.6</Version>
     </PackageReference>
+    <PackageReference Include="NFCForms">
+      <Version>2.3.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -120,6 +123,7 @@
     <Folder Include="Injection\SignalStrength\" />
     <Folder Include="Injection\Base\" />
     <Folder Include="Injection\Movement\" />
+    <Folder Include="Injection\NFC\" />
   </ItemGroup>
   <Import Project="..\BaobabMobile\BaobabMobile.projitems" Label="Shared" Condition="Exists('..\BaobabMobile\BaobabMobile.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿using BaobabMobile.Droid.Injection.Movement;
+using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Movement;
-using BaseBonsai.DataContracts;
 using DeviceMotion.Plugin;
 using DeviceMotion.Plugin.Abstractions;
 using Xamarin.Forms;

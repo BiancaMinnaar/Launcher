@@ -15,6 +15,8 @@ namespace BaobabMobile.Droid
             base.OnCreate(bundle);
             PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
                 GetSystemService(Context.TelephonyService));
+            PlatformSingelton.Instance.PlatformServiceList.Add("NfcManager",
+                                                               GetSystemService(Context.NfcService));
             global::Xamarin.Forms.Forms.Init(this, bundle);
             UserDialogs.Init(this);
             LoadApplication(new App());
