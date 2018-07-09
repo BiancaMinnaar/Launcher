@@ -1,15 +1,15 @@
 using System;
 using System.Threading.Tasks;
-using CorePCL;
 using BaobabMobile.Implementation.ViewModel;
 using BaobabMobile.Interface.Repository;
 using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.Repository;
-using BaobabMobile.Trunk.Injection.Location;
-using Xamarin.Forms;
-using BaobabMobile.Trunk.Injection.SignalStrength;
-using BaobabMobile.Trunk.Injection.Movement;
 using BaobabMobile.Trunk.Injection.Base;
+using BaobabMobile.Trunk.Injection.Location;
+using BaobabMobile.Trunk.Injection.Movement;
+using BaobabMobile.Trunk.Injection.SignalStrength;
+using CorePCL;
+using Xamarin.Forms;
 
 namespace BaobabMobile.Implementation.Repository
 {

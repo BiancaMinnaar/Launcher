@@ -28,7 +28,7 @@ namespace BaobabMobile.Droid.Injection.Movement
 
         void HandleServiceReturn(double x, double y, double z, double? compassReading)
         {
-            ServiceCallBack?.Invoke(new DeviceMovement { MotionVectorX = x, MotionVectorY=y, MotionVectorZ=z, CompassValue=compassReading.GetValueOrDefault() });
+            ExecuteCallBack(new DeviceMovement { MotionVectorX = x, MotionVectorY=y, MotionVectorZ=z, CompassValue=compassReading.GetValueOrDefault() });
         }
     }
 }

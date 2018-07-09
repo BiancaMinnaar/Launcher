@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android;
 using Android.Content;
@@ -7,6 +8,7 @@ using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Location;
 using BaseBonsai.DataContracts;
+using CorePCL;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 
@@ -21,42 +23,63 @@ namespace BaobabMobile.Droid.Injection.Location
         public LocationService()
         {
             isRequestingLocationUpdates = false;
-            if (ContextCompat.CheckSelfPermission(context, Manifest.Permission.AccessFineLocation) == Permission.Granted)
-            {
-                Task.Run(StartLocationUpdates);
-                isRequestingLocationUpdates = true;
-            }
+            ValidationRules = new List<ValidationRule>
+                {
+                new ValidationRule
+                {
+                    Check = () =>
+                    {
+                        return ContextCompat.CheckSelfPermission(
+                            context, Manifest.Permission.AccessFineLocation) == Permission.Granted;
+                    },
+                    ErrorMessage = "AccessFineLocation not requested."
+                },
+                new ValidationRule
+                {
+                    Check = () =>
+                    {
+                        if (ValidationRules[0].Check() && !isRequestingLocationUpdates)
+                        {
+                            Task.Run(StartLocationUpdates);
+                            isRequestingLocationUpdates = true;
+                        }
+
+                        return isRequestingLocationUpdates;
+                    },
+                    ErrorMessage = "Not currently requesting location updates"
+                },
+                new ValidationRule
+                {
+                    Check = () =>
+                    {
+                        return CrossGeolocator.Current.IsGeolocationEnabled;
+                    },
+                    ErrorMessage = "Geo location isn't enabled on this device."
+                }
+            };
         }
 
         public async Task StartLocationUpdates()
         {
-            if (isRequestingLocationUpdates)
+            try
             {
-                try
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 100;
+
+                var position = await locator.GetPositionAsync();
+
+                if (position != null)
                 {
-                    var locator = CrossGeolocator.Current;
-                    locator.DesiredAccuracy = 100;
-
-                    var position = await locator.GetPositionAsync();
-
-                    if (position != null)
-                    {
-                        ServiceCallBack?.Invoke(new Location { Lat = position.Latitude, Lon = position.Longitude });
-                    }
-
-                    if (!locator.IsGeolocationEnabled)
-                    {
-                        // Raise Error
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Raise Error
+                    ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
                 }
             }
-            else
+            catch (Exception ex)
             {
-                //Raise error
+                ValidationRules.Add(new ValidationRule
+                {
+                    Check = () => false,
+                    ErrorMessage = ex.Message
+                });
             }
         }
     }

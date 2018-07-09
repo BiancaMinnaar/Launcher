@@ -15,7 +15,7 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
         public SignalStrengthService()
         {
             Java.Lang.Object val;
-            var _telephonyManager = (PlatformBonsai.Instance.PlatformServiceList.TryGetValue(ServiceKey, out val))?
+            var _telephonyManager = (PlatformSingelton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out val))?
                 (TelephonyManager)val:null;
             var _signalStrengthListener = new GsmSignalStrengthListener();
             _signalStrengthListener.SignalStrengthChanged += HandleSignalStrengthChanged;
@@ -24,7 +24,7 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
 
         void HandleSignalStrengthChanged(int strength)
         {
-            ServiceCallBack?.Invoke(new SignalStrength { Strength = strength });
+            ExecuteCallBack(new SignalStrength { Strength = strength });
         }
     }
 }

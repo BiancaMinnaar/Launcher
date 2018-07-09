@@ -13,11 +13,18 @@ namespace BaobabMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            PlatformBonsai.Instance.PlatformServiceList.Add("TelephonyService",
+            PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
                 GetSystemService(Context.TelephonyService));
             global::Xamarin.Forms.Forms.Init(this, bundle);
             UserDialogs.Init(this);
             LoadApplication(new App());
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+                PlatformBonsai.NotifyOfBackgroundChange(
+                    new PlatformModelBonsai { IsBackgroundAvailable = true });
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
