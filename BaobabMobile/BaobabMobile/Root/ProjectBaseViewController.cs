@@ -16,7 +16,7 @@ namespace BaobabMobile.Root.ViewController
         where T : ProjectBaseViewModel
     {
         public IMasterRepository _MasterRepo { get; set; }
-        protected List<BrokenRule> BrokenRules;
+        protected List<ValidationRule> BrokenRules;
         public bool HasSpecificResponse { get; set; }
 
         protected ProjectBaseViewController()
@@ -25,7 +25,7 @@ namespace BaobabMobile.Root.ViewController
             _MasterRepo = MasterRepository.MasterRepo;
 
             HasSpecificResponse = false;
-            BrokenRules = new List<BrokenRule>();
+            BrokenRules = new List<ValidationRule>();
             base.NetworkInteractionSucceeded += (sender, e) =>
             {
                 base._RawBytes = e.RawBytes;
@@ -128,10 +128,10 @@ namespace BaobabMobile.Root.ViewController
         /// <returns></returns>
         protected string ValidateBrokenRules()
         {
-            foreach (BrokenRule check in this.BrokenRules)
+            foreach (ValidationRule check in this.BrokenRules)
             {
                 if (!check.Check())
-                    return check.Balance;
+                    return check.ErrorMessage;
             }
 
             return "";

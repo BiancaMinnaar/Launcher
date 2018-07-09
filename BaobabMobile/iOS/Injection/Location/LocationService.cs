@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Location;
-using BaseBonsai.DataContracts;
 using CoreLocation;
 using UIKit;
 using Xamarin.Forms;
@@ -43,7 +42,7 @@ namespace BaobabMobile.iOS.Injection
 
         void LocationManager_LocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)
         {
-            ServiceCallBack?.Invoke(new Location { Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude });
+            ExecuteCallBack(new Location { Lat = e.Locations[e.Locations.Length - 1].Coordinate.Latitude, Lon = e.Locations[e.Locations.Length - 1].Coordinate.Longitude });
         }
     }
 }

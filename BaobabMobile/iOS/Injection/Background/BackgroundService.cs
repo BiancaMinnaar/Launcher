@@ -1,7 +1,5 @@
-﻿using System;
-using BaobabMobile.iOS.Injection.Background;
+﻿using BaobabMobile.iOS.Injection.Background;
 using BaobabMobile.Trunk.Injection.Background;
-using BaseBonsai.DataContracts;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(BackgroundService))]

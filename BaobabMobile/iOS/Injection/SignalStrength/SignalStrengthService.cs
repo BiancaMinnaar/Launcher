@@ -1,6 +1,5 @@
 ﻿using BaobabMobile.iOS.Injection.SignalStrength;
 using BaobabMobile.Trunk.Injection.SignalStrength;
-using BaseBonsai.DataContracts;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
@@ -18,7 +17,7 @@ namespace BaobabMobile.iOS.Injection.SignalStrength
 
         void Current_ConnectivityChanged(object sender, Plugin.Connectivity.Abstractions.ConnectivityChangedEventArgs e)
         {
-            ServiceCallBack?.Invoke(new SignalStrength { Strength = e.IsConnected ? 1 : 0 });
+            ExecuteCallBack(new SignalStrength { Strength = e.IsConnected ? 1 : 0 });
         }
     }
 }

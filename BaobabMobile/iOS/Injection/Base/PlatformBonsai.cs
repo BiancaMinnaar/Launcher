@@ -1,7 +1,6 @@
 ﻿using System;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
-using BaseBonsai.DataContracts;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(PlatformBonsai))]
