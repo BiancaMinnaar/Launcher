@@ -9,8 +9,8 @@ using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.iOS.Injection;
 using BaobabMobile.Trunk.Injection.Location;
 using CorePCL;
-using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
+using Plugin.Geolocation;
+using Plugin.Geolocation.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
@@ -48,12 +48,12 @@ namespace BaobabMobile.Droid.Injection.Location
                     },
                     ErrorMessage = "Not currently requesting location updates"
                 }
-                        //,
+                //        ,
                 //new ValidationRule
                 //{
                 //    Check = () =>
                 //    {
-                //        return CrossGeolocator.Current.IsGeolocationEnabled;
+                //        return CrossGeolocation.Current.IsGeolocationEnabled;
                 //    },
                 //    ErrorMessage = "Geo location isn't enabled on this device."
                 //}
@@ -62,10 +62,10 @@ namespace BaobabMobile.Droid.Injection.Location
 
         public async Task StartLocationUpdates()
         {
-            var position = new Position();
+            var position = new LocationModel();
             try
             {
-                var locator = CrossGeolocator.Current;
+                var locator = CrossGeolocation.Current;
                 locator.DesiredAccuracy = 100;
 
                 position = await locator.GetPositionAsync();

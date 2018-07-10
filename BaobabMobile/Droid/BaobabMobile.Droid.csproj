@@ -72,11 +72,11 @@
     <PackageReference Include="Xam.Plugin.DeviceMotion">
       <Version>1.1.2</Version>
     </PackageReference>
-    <PackageReference Include="Xam.Plugin.Geolocator">
-      <Version>4.5.0.6</Version>
-    </PackageReference>
     <PackageReference Include="NFCForms">
       <Version>2.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Uhuru.Plugin.Geolocation">
+      <Version>1.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
