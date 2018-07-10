@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BaobabMobile.iOS.Injection.Base;
+using CoreLocation;
 using Foundation;
 using UIKit;
 
@@ -12,6 +13,11 @@ namespace BaobabMobile.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            PlatformSingelton.Instance.PlatformServiceList.Add("LocationService",
+                                                               new CLLocationManager
+                {
+                    PausesLocationUpdatesAutomatically = false
+                });
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

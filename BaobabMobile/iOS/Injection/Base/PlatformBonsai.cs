@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
 using Xamarin.Forms;
@@ -12,12 +13,14 @@ namespace BaobabMobile.iOS.Injection.Base
             () => new PlatformSingelton());
         public IPlatformModelBonsai Model { get; set; }
         public Action<IPlatformModelBonsai> ServiceCallBack;
+        public Dictionary<string, object> PlatformServiceList { get; set; }
 
         public static PlatformSingelton Instance { get { return lazy.Value; } }
 
         private PlatformSingelton()
         {
             Model = new PlatformModelBonsai();
+            PlatformServiceList = new Dictionary<string, object>();
         }
     }
 
