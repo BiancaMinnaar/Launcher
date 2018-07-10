@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using BaobabMobile.Implementation.Repository;
 using BaobabMobile.Implementation.Service;
 using BaobabMobile.Implementation.ViewModel;

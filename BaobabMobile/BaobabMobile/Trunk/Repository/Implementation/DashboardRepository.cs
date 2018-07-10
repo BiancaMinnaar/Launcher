@@ -41,10 +41,8 @@ namespace BaobabMobile.Implementation.Repository
             };
             _PlatformBonsai.ServiceCallBack = (platformModel) =>
             {
-                _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
-                _MasterRepo.DataSource.IsInBackground = platformModel.IsInBackground;
+                _MasterRepo.DataSource.PlatformModel = platformModel;
                 _MasterRepo.InvokePlatformServices(platformModel);
-
             };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>
