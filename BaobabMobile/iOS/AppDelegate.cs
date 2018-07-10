@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using BaobabMobile.iOS.Injection.Base;
+using BaobabMobile.Trunk.Injection.Base;
 using CoreLocation;
 using Foundation;
 using UIKit;
@@ -13,7 +11,7 @@ namespace BaobabMobile.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            PlatformSingelton.Instance.PlatformServiceList.Add("LocationService",
+            PlatformSingleton.Instance.PlatformServiceList.Add("LocationService",
                                                                new CLLocationManager
                 {
                     PausesLocationUpdatesAutomatically = false

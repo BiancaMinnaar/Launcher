@@ -25,7 +25,7 @@ namespace BaobabMobile.iOS.Injection
 
         protected override void Activate()
         {
-            var locationManager = (PlatformSingelton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out object val)) ?
+            var locationManager = (PlatformSingleton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out object val)) ?
                             (CLLocationManager)val : null;
             locationManager.RequestAlwaysAuthorization();
             locationManager.AllowsBackgroundLocationUpdates = true;

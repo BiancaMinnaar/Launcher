@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
 using Xamarin.Forms;
@@ -7,36 +6,19 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(PlatformBonsai))]
 namespace BaobabMobile.iOS.Injection.Base
 {
-    public sealed class PlatformSingelton
-    {
-        static readonly Lazy<PlatformSingelton> lazy = new Lazy<PlatformSingelton>(
-            () => new PlatformSingelton());
-        public IPlatformModelBonsai Model { get; set; }
-        public Action<IPlatformModelBonsai> ServiceCallBack;
-        public Dictionary<string, object> PlatformServiceList { get; set; }
-
-        public static PlatformSingelton Instance { get { return lazy.Value; } }
-
-        private PlatformSingelton()
-        {
-            Model = new PlatformModelBonsai();
-            PlatformServiceList = new Dictionary<string, object>();
-        }
-    }
-
     public sealed class PlatformBonsai : PlatformServiceBonsai<IPlatformModelBonsai>, IPlatformBonsai<IPlatformModelBonsai>
     {
         public new Action<IPlatformModelBonsai> ServiceCallBack
         {
-            get => PlatformSingelton.Instance.ServiceCallBack;
-            set => PlatformSingelton.Instance.ServiceCallBack = value;
+            get => PlatformSingleton.Instance.ServiceCallBack;
+            set => PlatformSingleton.Instance.ServiceCallBack = value;
         }
 
         public static void NotifyOfBackgroundChange(IPlatformModelBonsai model)
         {
-            PlatformSingelton.Instance.Model.IsBackgroundAvailable = model.IsBackgroundAvailable;
-            PlatformSingelton.Instance.Model.IsInBackground = model.IsInBackground;
-            PlatformSingelton.Instance.ServiceCallBack?.Invoke(PlatformSingelton.Instance.Model);
+            PlatformSingleton.Instance.Model.IsBackgroundAvailable = model.IsBackgroundAvailable;
+            PlatformSingleton.Instance.Model.IsInBackground = model.IsInBackground;
+            PlatformSingleton.Instance.ServiceCallBack?.Invoke(PlatformSingleton.Instance.Model);
         }
 
         protected override void Activate()
