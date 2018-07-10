@@ -6,6 +6,5 @@ namespace BaobabMobile.Interface.ViewController
     {
         Task Load();
         void CloseMenu();
-        void SendToBackground();
     }
 }

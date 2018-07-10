@@ -43,7 +43,7 @@ namespace BaobabMobile.Implementation.Repository
             {
                 _MasterRepo.DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
                 _MasterRepo.DataSource.IsInBackground = platformModel.IsInBackground;
-                _MasterRepo.PerformBackground(trackLocationService);
+                _MasterRepo.InvokePlatformServices(platformModel);
 
             };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
@@ -91,7 +91,7 @@ namespace BaobabMobile.Implementation.Repository
 
         public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
-            translate(model, _Model);
+            //translate(model, _Model);
             var serviceReturnModel = await _Service.Refresh(model);
             completeAction(serviceReturnModel);
         }

@@ -30,10 +30,5 @@ namespace BaobabMobile.Implementation.ViewController
         {
             _MasterRepo.PopModal();
         }
-
-        public void SendToBackground()
-        {
-            _Reposetory.SendToBackground();
-        }
     }
 }

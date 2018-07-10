@@ -118,11 +118,8 @@
     <Compile Include="Injection\Rest\RestServiceIOS.cs" />
     <Compile Include="Injection\SignalStrength\SignalStrengthService.cs" />
     <Compile Include="Injection\SignalStrength\SignalStrength.cs" />
-    <Compile Include="Injection\Background\BackgroundModel.cs" />
-    <Compile Include="Injection\Background\BackgroundService.cs" />
     <Compile Include="Injection\Base\PlatformBonsai.cs" />
     <Compile Include="Injection\Base\PlatformModelBonsai.cs" />
-    <Compile Include="Injection\PlatformServiceBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

@@ -4,7 +4,7 @@ using BaobabMobile.Trunk.Injection.Location;
 
 namespace BaobabMobile.Implementation.ViewModel
 {
-    public class DashboardViewModel : ProjectBaseViewModel, ILocation, INotifyPropertyChanged
+    public class DashboardViewModel : ProjectBaseViewModel, INotifyPropertyChanged
     {
         public new event PropertyChangedEventHandler PropertyChanged;
         double lon;

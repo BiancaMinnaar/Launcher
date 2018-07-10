@@ -1,5 +1,4 @@
-﻿using System;
-using BaobabMobile.Trunk.Injection.Location;
+﻿using BaobabMobile.Trunk.Injection.Location;
 
 namespace BaobabMobile.iOS.Injection
 {
@@ -7,5 +6,7 @@ namespace BaobabMobile.iOS.Injection
     {
         public double Lat { get; set; }
         public double Lon { get; set; }
+
+        public string PlatformName { get; }
     }
 }

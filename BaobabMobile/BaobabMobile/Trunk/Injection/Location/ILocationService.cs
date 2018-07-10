@@ -5,6 +5,5 @@ namespace BaobabMobile.Trunk.Injection.Location
 {
     public interface ILocationService<T> : IPlatformService<T> where T : ILocation
     {
-        Task StartLocationUpdates();
     }
 }

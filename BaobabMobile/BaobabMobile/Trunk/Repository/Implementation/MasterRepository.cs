@@ -10,9 +10,7 @@ using BaobabMobile.Root.ViewModel;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using BaobabMobile.Implementation.View;
-using BaobabMobile.Trunk.Injection.Location;
 using BaobabMobile.Trunk.Injection.Base;
-using BaobabMobile.Interface.Service;
 using BaobabMobile.Implementation.ViewModel;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
@@ -88,23 +86,26 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
-        public void PerformBackground(ITrackLocationService<TrackLocationViewModel> trackLocationService)
+        public void InvokePlatformServices(IPlatformModelBonsai model) 
         {
-            ILocationService<ILocation> _LocationService;
-            _LocationService = DependencyService.Get<ILocationService<ILocation>>();
-            _LocationService.ServiceCallBack = (location) =>
-            {
-                trackLocationService.TrackLocation(new TrackLocationViewModel
-                {
-                    Lat = location.Lat,
-                    Lon = location.Lon
-                });
-            };
-            _LocationService.OnError = (errors) =>
-            {
-                OnError?.Invoke(errors);
-            };
-            _LocationService.StartLocationUpdates();
+
+
+            //service _Service;
+            //_Service = DependencyService.Get();
+            //_Service.ServiceCallBack = (location) =>
+            //{
+            //    var locationModel = new TrackLocationViewModel
+            //    {
+            //        Lat = location.Lat,
+            //        Lon = location.Lon
+            //    };
+            //    trackLocationService.TrackLocation(locationModel);
+            //};
+            //_LocationService.OnError = (errors) =>
+            //{
+            //    OnError?.Invoke(errors);
+            //};
+            //_LocationService.StartLocationUpdates();
         }
 
         public void PushDashboardView()

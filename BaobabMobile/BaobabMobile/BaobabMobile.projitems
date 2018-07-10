@@ -118,6 +118,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\IBackgroundService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformBonsai.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformModelBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformServiceBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />

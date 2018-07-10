@@ -28,10 +28,5 @@ namespace BaobabMobile.Implementation.Repository
             var serviceReturnModel = await _Service.Load(model);
             completeAction(serviceReturnModel);
         }
-
-        public void SendToBackground()
-        {
-            _PlatformBonsai.SentToBackground();
-        }
     }
 }

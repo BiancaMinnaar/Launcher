@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using CorePCL;
 
-namespace BaobabMobile.iOS.Injection
+namespace BaobabMobile.Trunk.Injection.Base
 {
-    public abstract class PlatformServiceBonsai<T>
+    public abstract class PlatformServiceBonsai<model> where model : IPlatformModelBase
     {
-        private Action<T> _ServiceCallback;
-
         public virtual string ServiceKey { get; }
-        public Action<T> ServiceCallBack
+        private Action<model> _ServiceCallback;
+        public Action<model> ServiceCallBack
         {
             set => _ServiceCallback = value;
         }
@@ -24,6 +23,17 @@ namespace BaobabMobile.iOS.Injection
         public PlatformServiceBonsai()
         {
             ValidationRules = new List<ValidationRule>();
+            ConfigureRules();
+            Activate();
+        }
+
+        protected ValidationRule GetRule(Func<bool> check, string errorMessage)
+        {
+            return new ValidationRule
+            {
+                Check = check,
+                ErrorMessage = errorMessage
+            };
         }
 
         string[] RunValidationRules()
@@ -41,7 +51,7 @@ namespace BaobabMobile.iOS.Injection
             return errorList.ToArray();
         }
 
-        protected void ExecuteCallBack(T model)
+        protected void ExecuteCallBack(model model)
         {
             var possibleErrors = RunValidationRules();
             if (possibleErrors.Length == 0)
@@ -53,5 +63,8 @@ namespace BaobabMobile.iOS.Injection
                 OnError?.Invoke(possibleErrors);
             }
         }
+
+        protected abstract void ConfigureRules();
+        protected abstract void Activate();
     }
 }

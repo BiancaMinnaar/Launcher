@@ -8,6 +8,8 @@ namespace BaobabMobile.iOS.Injection.Base
         public bool IsBackgroundAvailable { get; set; }
         public bool IsInBackground { get; set; }
 
+        public string PlatformName { get; }
+
         public PlatformModelBonsai()
         {
             IsInBackground = false;

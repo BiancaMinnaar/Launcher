@@ -39,9 +39,12 @@ namespace BaobabMobile.iOS.Injection.Base
             PlatformSingelton.Instance.ServiceCallBack?.Invoke(PlatformSingelton.Instance.Model);
         }
 
-        public void SentToBackground()
+        protected override void Activate()
         {
-            throw new NotImplementedException();
+        }
+
+        protected override void ConfigureRules()
+        {
         }
     }
 }
