@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using BaobabMobile.Implementation.View;
 using BaobabMobile.Trunk.Injection.Base;
-using BaobabMobile.Implementation.ViewModel;
 
 namespace BaobabMobile.Trunk.Repository.Implementation
 {
@@ -30,12 +29,6 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             : base(null)
         {
             DataSource = new MasterModel();
-            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
-            _PlatformBonsai.ServiceCallBack = (platformModel) =>
-            {
-                DataSource.IsBackroundAvailable = platformModel.IsBackgroundAvailable;
-                DataSource.IsInBackground = platformModel.IsInBackground;
-            };
         }
 
         public static MasterRepository MasterRepo
@@ -86,7 +79,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
-        public void InvokePlatformServices(IPlatformModelBonsai model) 
+        public void InvokePlatformServices(IPlatformBonsai<IPlatformModelBonsai> platform) 
         {
 
 

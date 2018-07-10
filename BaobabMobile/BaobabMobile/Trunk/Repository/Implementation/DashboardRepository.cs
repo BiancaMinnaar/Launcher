@@ -42,7 +42,7 @@ namespace BaobabMobile.Implementation.Repository
             _PlatformBonsai.ServiceCallBack = (platformModel) =>
             {
                 _MasterRepo.DataSource.PlatformModel = platformModel;
-                _MasterRepo.InvokePlatformServices(platformModel);
+                _MasterRepo.InvokePlatformServices(_PlatformBonsai);
             };
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>
