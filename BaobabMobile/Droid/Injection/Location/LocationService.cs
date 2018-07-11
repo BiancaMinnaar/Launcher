@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android;
 using Android.Content;
@@ -8,7 +7,6 @@ using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
-using CorePCL;
 using Plugin.Geolocation;
 using Plugin.Geolocation.Abstractions;
 using Xamarin.Forms;
@@ -21,44 +19,28 @@ namespace BaobabMobile.Droid.Injection.Location
         Context context = Android.App.Application.Context;
         bool canRequestingLocationUpdates;
 
+        protected override void ConfigureRules()
+        {
+            ValidationRules.Add(GetRule(() =>
+                                        ContextCompat.CheckSelfPermission(
+                            context, Manifest.Permission.AccessFineLocation) == Permission.Granted,
+                                        ""));
+            ValidationRules.Add(GetRule(() =>
+            {
+                if(ValidationRules[0].Check() && !canRequestingLocationUpdates)
+                {
+                    canRequestingLocationUpdates = true;
+                }
+                return canRequestingLocationUpdates;
+            }, ""));
+                                        
+        }
+
         public LocationService()
         {
             canRequestingLocationUpdates = false;
-            ValidationRules = new List<ValidationRule>
-                {
-                new ValidationRule
-                {
-                    Check = () =>
-                    {
-                        return ContextCompat.CheckSelfPermission(
-                            context, Manifest.Permission.AccessFineLocation) == Permission.Granted;
-                    },
-                    ErrorMessage = "AccessFineLocation not requested."
-                },
-                new ValidationRule
-                {
-                    Check = () =>
-                    {
-                        if (ValidationRules[0].Check() && !canRequestingLocationUpdates)
-                        {
-                            canRequestingLocationUpdates = true;
-                        }
-
-                        return canRequestingLocationUpdates;
-                    },
-                    ErrorMessage = "Not currently requesting location updates"
-                }
-                //        ,
-                //new ValidationRule
-                //{
-                //    Check = () =>
-                //    {
-                //        return CrossGeolocation.Current.IsGeolocationEnabled;
-                //    },
-                //    ErrorMessage = "Geo location isn't enabled on this device."
-                //}
-            };
         }
+
         async Task setLocation(Action<LocationModel> callBack)
         {
             var locator = CrossGeolocation.Current;
