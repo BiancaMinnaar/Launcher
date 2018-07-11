@@ -10,6 +10,7 @@ using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
 using CorePCL;
 using Plugin.Geolocation;
+using Plugin.Geolocation.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
@@ -58,6 +59,13 @@ namespace BaobabMobile.Droid.Injection.Location
                 //}
             };
         }
+        async Task setLocation(Action<LocationModel> callBack)
+        {
+            var locator = CrossGeolocation.Current;
+            locator.DesiredAccuracy = 100;
+            var position = await locator.GetPositionAsync();
+            callBack(position);
+        }
 
         public override void Activate()
         {
@@ -66,8 +74,8 @@ namespace BaobabMobile.Droid.Injection.Location
 
                 Task.Run(async () => 
                 {
-                    var position = locator.GetPositionAsync().Result;
-                    ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
+                    await setLocation((position) =>
+                                ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude }));
                 });
         }
     }
