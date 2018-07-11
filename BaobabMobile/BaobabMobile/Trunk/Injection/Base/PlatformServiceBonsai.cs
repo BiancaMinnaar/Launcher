@@ -24,7 +24,6 @@ namespace BaobabMobile.Trunk.Injection.Base
         {
             ValidationRules = new List<ValidationRule>();
             ConfigureRules();
-            Activate();
         }
 
         protected ValidationRule GetRule(Func<bool> check, string errorMessage)
@@ -64,7 +63,8 @@ namespace BaobabMobile.Trunk.Injection.Base
             }
         }
 
-        protected abstract void ConfigureRules();
-        protected abstract void Activate();
+        protected virtual void ConfigureRules(){}
+        public virtual void Activate(){}
+        public virtual void SetManagers(object[] managers){}
     }
 }

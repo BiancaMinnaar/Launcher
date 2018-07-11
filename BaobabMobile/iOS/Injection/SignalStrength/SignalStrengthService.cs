@@ -10,11 +10,7 @@ namespace BaobabMobile.iOS.Injection.SignalStrength
 {
     public class SignalStrengthService : PlatformServiceBonsai<ISignalStrength>, ISignalStrengthService<ISignalStrength>
     {
-        protected override void ConfigureRules()
-        {
-        }
-
-        protected override void Activate()
+        public override void Activate()
         {
             var speeds = CrossConnectivity.Current.Bandwidths;
             var connectionTypes = CrossConnectivity.Current.ConnectionTypes;

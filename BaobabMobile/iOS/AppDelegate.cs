@@ -1,7 +1,6 @@
 using BaobabMobile.iOS.Injection;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
-using BaobabMobile.Trunk.Injection.Location;
 using CoreLocation;
 using Foundation;
 using UIKit;
@@ -13,23 +12,15 @@ namespace BaobabMobile.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            PlatformServiceBonsai<IPlatformModelBase> service = new LocationService();
-
-            PlatformSingleton.Instance.PlatformServiceList.Add(
+            PlatformSingleton.Instance.PlatformServiceList.Add<LocationService>(
                 new BonsaiPlatformServiceRegistrationStruct
                 {
                     ServiceKey = "LocationService",
-                    Manager = new CLLocationManager
-                    {
-                        PausesLocationUpdatesAutomatically = false
-                    },
-                platformHarness = service,
-            });
-                //"LocationService",
-                //                                               new CLLocationManager
-                //{
-                //    PausesLocationUpdatesAutomatically = false
-                //});
+                }, 
+                new CLLocationManager
+                {
+                    PausesLocationUpdatesAutomatically = false
+                });
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
@@ -40,7 +31,7 @@ namespace BaobabMobile.iOS
             if (application.BackgroundRefreshStatus == UIBackgroundRefreshStatus.Available)
             {
                 PlatformBonsai.NotifyOfBackgroundChange(
-                    new PlatformModelBonsai{ IsBackgroundAvailable = true });
+                    new PlatformModelBonsai { IsBackgroundAvailable = true });
             }
             else
             {

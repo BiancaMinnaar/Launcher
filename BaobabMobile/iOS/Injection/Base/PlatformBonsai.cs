@@ -24,13 +24,5 @@ namespace BaobabMobile.iOS.Injection.Base
             PlatformSingleton.Instance.Model.IsInBackground = model.IsInBackground;
             PlatformSingleton.Instance.ServiceCallBack?.Invoke(PlatformSingleton.Instance.Model);
         }
-
-        protected override void Activate()
-        {
-        }
-
-        protected override void ConfigureRules()
-        {
-        }
     }
 }

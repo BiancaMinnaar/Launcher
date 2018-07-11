@@ -11,6 +11,12 @@ namespace BaobabMobile.iOS.Injection
     public class LocationService : PlatformServiceBonsai<IPlatformModelBase>, ILocationService<IPlatformModelBase>
     {
         public override string ServiceKey => "LocationService";
+        CLLocationManager Manager { get; set; }
+
+        public override void SetManagers(object[] managers)
+        {
+            Manager = (CLLocationManager)managers[0];
+        }
 
         protected override void ConfigureRules()
         {
@@ -22,18 +28,15 @@ namespace BaobabMobile.iOS.Injection
                                         "System version lower than 9."));
         }
 
-        protected override void Activate()
+        public override void Activate()
         {
-            var locationManager = 
-                (PlatformSingleton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out BonsaiPlatformServiceRegistrationStruct val)) ?
-                            (CLLocationManager)val.Manager : null;
-            locationManager.RequestAlwaysAuthorization();
-            locationManager.AllowsBackgroundLocationUpdates = true;
+            Manager.RequestAlwaysAuthorization();
+            Manager.AllowsBackgroundLocationUpdates = true;
             if (CLLocationManager.LocationServicesEnabled)
             {
-                locationManager.DesiredAccuracy = 1;
-                locationManager.LocationsUpdated += LocationManager_LocationsUpdated;
-                locationManager.StartUpdatingLocation();
+                Manager.DesiredAccuracy = 1;
+                Manager.LocationsUpdated += LocationManager_LocationsUpdated;
+                Manager.StartUpdatingLocation();
             }
         }
 

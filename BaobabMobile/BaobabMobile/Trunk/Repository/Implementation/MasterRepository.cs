@@ -23,13 +23,14 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         private Page _RootView;
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
         public Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> NetworkInterfaceWithTypedParameters { get; set; }
-        IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
         public List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>> OnPlatformServiceCallBack { get; set; }
 
         MasterRepository()
             : base(null)
         {
             DataSource = new MasterModel();
+            OnPlatformServiceCallBack = 
+                new List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>>();
         }
 
         public static MasterRepository MasterRepo
@@ -93,23 +94,6 @@ namespace BaobabMobile.Trunk.Repository.Implementation
                     }
                 };
             }
-
-            //service _Service;
-            //_Service = DependencyService.Get();
-            //_Service.ServiceCallBack = (location) =>
-            //{
-            //    var locationModel = new TrackLocationViewModel
-            //    {
-            //        Lat = location.Lat,
-            //        Lon = location.Lon
-            //    };
-            //    trackLocationService.TrackLocation(locationModel);
-            //};
-            //_LocationService.OnError = (errors) =>
-            //{
-            //    OnError?.Invoke(errors);
-            //};
-            //_LocationService.StartLocationUpdates();
         }
 
         public void PushDashboardView()

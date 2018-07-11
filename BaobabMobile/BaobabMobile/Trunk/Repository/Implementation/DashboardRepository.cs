@@ -33,6 +33,7 @@ namespace BaobabMobile.Implementation.Repository
             DashboardViewModel model)
             : base(masterRepository)
         {
+            var tracker = new TrackLocationRepository<TrackLocationViewModel>(_MasterRepo, trackLocationService);
             _Service = service;
             _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
             _PlatformBonsai.OnError = (obj) => 
