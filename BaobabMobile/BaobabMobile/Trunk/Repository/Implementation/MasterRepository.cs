@@ -24,6 +24,7 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
         public Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> NetworkInterfaceWithTypedParameters { get; set; }
         IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
+        public List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>> OnPlatformServiceCallBack { get; set; }
 
         MasterRepository()
             : base(null)
@@ -81,7 +82,17 @@ namespace BaobabMobile.Trunk.Repository.Implementation
 
         public void InvokePlatformServices(IPlatformBonsai<IPlatformModelBonsai> platform) 
         {
-
+            var platformServices = platform.GetBonsaiServices;
+            foreach(var service in platformServices)
+            {
+                service.platformHarness.ServiceCallBack = (model) =>
+                {
+                    foreach(var listener in OnPlatformServiceCallBack)
+                    {
+                        listener?.Invoke(service, model);
+                    }
+                };
+            }
 
             //service _Service;
             //_Service = DependencyService.Get();

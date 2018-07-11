@@ -1,5 +1,7 @@
+using BaobabMobile.iOS.Injection;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
+using BaobabMobile.Trunk.Injection.Location;
 using CoreLocation;
 using Foundation;
 using UIKit;
@@ -11,11 +13,23 @@ namespace BaobabMobile.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            PlatformSingleton.Instance.PlatformServiceList.Add("LocationService",
-                                                               new CLLocationManager
+            PlatformServiceBonsai<IPlatformModelBase> service = new LocationService();
+
+            PlatformSingleton.Instance.PlatformServiceList.Add(
+                new BonsaiPlatformServiceRegistrationStruct
                 {
-                    PausesLocationUpdatesAutomatically = false
-                });
+                    ServiceKey = "LocationService",
+                    Manager = new CLLocationManager
+                    {
+                        PausesLocationUpdatesAutomatically = false
+                    },
+                platformHarness = service,
+            });
+                //"LocationService",
+                //                                               new CLLocationManager
+                //{
+                //    PausesLocationUpdatesAutomatically = false
+                //});
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

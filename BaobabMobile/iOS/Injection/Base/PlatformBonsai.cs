@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
 using Xamarin.Forms;
@@ -13,6 +14,9 @@ namespace BaobabMobile.iOS.Injection.Base
             get => PlatformSingleton.Instance.ServiceCallBack;
             set => PlatformSingleton.Instance.ServiceCallBack = value;
         }
+
+        public IEnumerable<BonsaiPlatformServiceRegistrationStruct> GetBonsaiServices 
+            => PlatformSingleton.Instance.PlatformServiceList.Values;
 
         public static void NotifyOfBackgroundChange(IPlatformModelBonsai model)
         {

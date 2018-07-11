@@ -1,5 +1,4 @@
-﻿using System;
-using BaobabMobile.Trunk.Injection.Base;
+﻿using BaobabMobile.Trunk.Injection.Base;
 
 namespace BaobabMobile.iOS.Injection.Base
 {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BaobabMobile.Root.ViewModel;
 using BaobabMobile.Trunk.Injection.Base;
 using Xamarin.Forms;
@@ -21,5 +22,6 @@ namespace BaobabMobile.Interface.Repository
         void ShowMenu();
         void CloseMenu();
         Action<string[]> OnError { get; set; }
+        List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>> OnPlatformServiceCallBack {get;set;}
     }
 }

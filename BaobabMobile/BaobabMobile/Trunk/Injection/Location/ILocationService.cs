@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using BaobabMobile.Trunk.Injection.Base;
+﻿using BaobabMobile.Trunk.Injection.Base;
 
 namespace BaobabMobile.Trunk.Injection.Location
 {
-    public interface ILocationService<T> : IPlatformService<T> where T : ILocation
+    public interface ILocationService<T> : IPlatformService<T> where T : IPlatformModelBase
     {
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BaobabMobile.iOS.Injection;
-using BaobabMobile.iOS.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
 using CoreLocation;
@@ -9,7 +8,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.iOS.Injection
 {
-    public class LocationService : PlatformServiceBonsai<ILocation>, ILocationService<ILocation>
+    public class LocationService : PlatformServiceBonsai<IPlatformModelBase>, ILocationService<IPlatformModelBase>
     {
         public override string ServiceKey => "LocationService";
 
@@ -25,8 +24,9 @@ namespace BaobabMobile.iOS.Injection
 
         protected override void Activate()
         {
-            var locationManager = (PlatformSingleton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out object val)) ?
-                            (CLLocationManager)val : null;
+            var locationManager = 
+                (PlatformSingleton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out BonsaiPlatformServiceRegistrationStruct val)) ?
+                            (CLLocationManager)val.Manager : null;
             locationManager.RequestAlwaysAuthorization();
             locationManager.AllowsBackgroundLocationUpdates = true;
             if (CLLocationManager.LocationServicesEnabled)
