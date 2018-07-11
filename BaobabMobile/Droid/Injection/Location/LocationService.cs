@@ -6,17 +6,16 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection.Location;
-using BaobabMobile.iOS.Injection;
+using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
 using CorePCL;
 using Plugin.Geolocation;
-using Plugin.Geolocation.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
 namespace BaobabMobile.Droid.Injection.Location
 {
-    public class LocationService : PlatformServiceBonsai<ILocation>, ILocationService<ILocation>
+    public class LocationService : PlatformServiceBonsai<IPlatformModelBase>, ILocationService<IPlatformModelBase>
     {
         Context context = Android.App.Application.Context;
         bool canRequestingLocationUpdates;
@@ -60,29 +59,16 @@ namespace BaobabMobile.Droid.Injection.Location
             };
         }
 
-        public async Task StartLocationUpdates()
+        public override void Activate()
         {
-            var position = new LocationModel();
-            try
-            {
-                var locator = CrossGeolocation.Current;
+            var locator = CrossGeolocation.Current;
                 locator.DesiredAccuracy = 100;
 
-                position = await locator.GetPositionAsync();
-
-            }
-            catch (Exception ex)
-            {
-                ValidationRules.Add(new ValidationRule
+                Task.Run(async () => 
                 {
-                    Check = () => false,
-                    ErrorMessage = ex.Message
+                    var position = locator.GetPositionAsync().Result;
+                    ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
                 });
-            }
-            finally
-            {
-                ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude });
-            }
         }
     }
 }

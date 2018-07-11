@@ -8,7 +8,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(DeviceMovementService))]
 namespace BaobabMobile.Droid.Injection.Movement
 {
-    public class DeviceMovementService : PlatformServiceBonsai<IDeviceMovement>, IDeviceMovementService<IDeviceMovement>
+    public class DeviceMovementService : PlatformServiceBonsai<IPlatformModelBase>, IDeviceMovementService<IPlatformModelBase>
     {
         public override void Activate()
         {
