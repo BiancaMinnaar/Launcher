@@ -4,6 +4,11 @@ using Android.Content.PM;
 using Android.OS;
 using Acr.UserDialogs;
 using BaobabMobile.Droid.Injection.Base;
+using BaobabMobile.Trunk.Injection.Base;
+using BaobabMobile.Droid.Injection.Location;
+using Plugin.CurrentActivity;
+using Plugin.Permissions;
+using Android.Runtime;
 
 namespace BaobabMobile.Droid
 {
@@ -13,10 +18,19 @@ namespace BaobabMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
-                GetSystemService(Context.TelephonyService));
-            PlatformSingelton.Instance.PlatformServiceList.Add("NfcManager",
-                                                               GetSystemService(Context.NfcService));
+
+            CrossCurrentActivity.Current.Init(this, bundle);
+            PlatformSingleton.Instance.PlatformServiceList.Add<LocationService>(
+                new BonsaiPlatformServiceRegistrationStruct
+                {
+                    ServiceKey = "LocationService",
+                }, null);
+
+
+            //PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
+            //    GetSystemService(Context.TelephonyService));
+            //PlatformSingelton.Instance.PlatformServiceList.Add("NfcManager",
+                                                               //GetSystemService(Context.NfcService));
             global::Xamarin.Forms.Forms.Init(this, bundle);
             UserDialogs.Init(this);
             LoadApplication(new App());
@@ -33,5 +47,12 @@ namespace BaobabMobile.Droid
         {
             base.OnActivityResult(requestCode, resultCode, data);
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
     }
 }

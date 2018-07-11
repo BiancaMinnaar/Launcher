@@ -1,7 +1,6 @@
 ﻿using Android.Telephony;
-using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Droid.Injection.SignalStrength;
-using BaobabMobile.iOS.Injection;
+using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.SignalStrength;
 using Xamarin.Forms;
 
@@ -11,12 +10,15 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
     public class SignalStrengthService : PlatformServiceBonsai<ISignalStrength>, ISignalStrengthService<ISignalStrength>
     {
         public override string ServiceKey => "TelephonyService";
+        TelephonyManager _telephonyManager;
 
-        public SignalStrengthService()
+        public override void SetManagers(object[] managers)
         {
-            Java.Lang.Object val;
-            var _telephonyManager = (PlatformSingelton.Instance.PlatformServiceList.TryGetValue(ServiceKey, out val))?
-                (TelephonyManager)val:null;
+            _telephonyManager = (TelephonyManager)managers[0];
+        }
+
+        public override void Activate()
+        {
             var _signalStrengthListener = new GsmSignalStrengthListener();
             _signalStrengthListener.SignalStrengthChanged += HandleSignalStrengthChanged;
             _telephonyManager.Listen(_signalStrengthListener, PhoneStateListenerFlags.SignalStrengths);

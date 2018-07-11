@@ -1,5 +1,5 @@
 ﻿using BaobabMobile.Droid.Injection.Movement;
-using BaobabMobile.iOS.Injection;
+using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Movement;
 using DeviceMotion.Plugin;
 using DeviceMotion.Plugin.Abstractions;
@@ -10,7 +10,7 @@ namespace BaobabMobile.Droid.Injection.Movement
 {
     public class DeviceMovementService : PlatformServiceBonsai<IDeviceMovement>, IDeviceMovementService<IDeviceMovement>
     {
-        public DeviceMovementService()
+        public override void Activate()
         {
             CrossDeviceMotion.Current.SensorValueChanged += (s, a) => {
 

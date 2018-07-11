@@ -105,7 +105,6 @@
     <Compile Include="Injection\Movement\DeviceMovementService.cs" />
     <Compile Include="Injection\Movement\DeviceMovement.cs" />
     <Compile Include="Injection\Base\PlatformModelBonsai.cs" />
-    <Compile Include="Injection\PlatformServiceBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />

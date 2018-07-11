@@ -8,5 +8,7 @@ namespace BaobabMobile.Droid.Injection.Movement
         public double MotionVectorY { get; set; }
         public double MotionVectorZ { get; set; }
         public double CompassValue { get; set; }
+
+        public string PlatformName { get; }
     }
 }

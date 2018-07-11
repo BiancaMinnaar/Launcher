@@ -1,6 +1,8 @@
-﻿namespace BaobabMobile.Trunk.Injection.Movement
+﻿using BaobabMobile.Trunk.Injection.Base;
+
+namespace BaobabMobile.Trunk.Injection.Movement
 {
-    public interface IDeviceMovement
+    public interface IDeviceMovement : IPlatformModelBase
     {
         double MotionVectorX { get;set; }
         double MotionVectorY { get; set; }
