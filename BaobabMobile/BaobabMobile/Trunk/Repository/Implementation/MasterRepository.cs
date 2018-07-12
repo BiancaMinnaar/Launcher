@@ -23,14 +23,14 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         private Page _RootView;
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
         public Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> NetworkInterfaceWithTypedParameters { get; set; }
-        public List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>> OnPlatformServiceCallBack { get; set; }
+        public List<Action<string, IPlatformModelBase>> OnPlatformServiceCallBack { get; set; }
 
         MasterRepository()
             : base(null)
         {
             DataSource = new MasterModel();
             OnPlatformServiceCallBack = 
-                new List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>>();
+                new List<Action<string, IPlatformModelBase>>();
         }
 
         public static MasterRepository MasterRepo
@@ -81,18 +81,11 @@ namespace BaobabMobile.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
-        public void InvokePlatformServices(IPlatformBonsai<IPlatformModelBonsai> platform) 
+        public void ReportToAllListeners(string serviceKey, IPlatformModelBase model) 
         {
-            var platformServices = platform.GetBonsaiServices;
-            foreach(var service in platformServices)
+            foreach (var listener in OnPlatformServiceCallBack)
             {
-                service.platformHarness.ServiceCallBack = (model) =>
-                {
-                    foreach(var listener in OnPlatformServiceCallBack)
-                    {
-                        listener?.Invoke(service, model);
-                    }
-                };
+                listener?.Invoke(serviceKey, model);
             }
         }
 

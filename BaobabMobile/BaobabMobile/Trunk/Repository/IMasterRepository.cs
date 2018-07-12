@@ -17,11 +17,11 @@ namespace BaobabMobile.Interface.Repository
         void ShowLoading();
         void HideLoading();
         void DumpJson<T>(string heading, T objectToDump);
-        void InvokePlatformServices(IPlatformBonsai<IPlatformModelBonsai> platform);
+        void ReportToAllListeners(string serviceKey, IPlatformModelBase model);
         void PushDashboardView();
         void ShowMenu();
         void CloseMenu();
         Action<string[]> OnError { get; set; }
-        List<Action<BonsaiPlatformServiceRegistrationStruct, IPlatformModelBase>> OnPlatformServiceCallBack {get;set;}
+        List<Action<string, IPlatformModelBase>> OnPlatformServiceCallBack {get;set;}
     }
 }

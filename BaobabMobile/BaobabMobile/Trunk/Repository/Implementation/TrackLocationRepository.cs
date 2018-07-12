@@ -18,9 +18,9 @@ namespace BaobabMobile.Implementation.Repository
             : base(masterRepository)
         {
             _Service = service;
-            _MasterRepo.OnPlatformServiceCallBack.Add(async (platformHarness, model) =>
+            _MasterRepo.OnPlatformServiceCallBack.Add(async (serviceKey, model) =>
             {
-                if (platformHarness.ServiceKey.Equals("LocationService"))
+                if (serviceKey.Equals("LocationServiceCurrentActivity"))
                 {
                     var locationModel = new TrackLocationViewModel
                     {

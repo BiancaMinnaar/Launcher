@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaobabMobile.Trunk.Injection.Base
 {
@@ -13,7 +12,6 @@ namespace BaobabMobile.Trunk.Injection.Base
             {
                 registrationStruct.platformHarness = new T();
                 registrationStruct.platformHarness.SetManagers(managers);
-                registrationStruct.platformHarness.Activate();
                 Add(registrationStruct.ServiceKey, registrationStruct);
             }
         }

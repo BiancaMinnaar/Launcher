@@ -40,11 +40,18 @@ namespace BaobabMobile.Implementation.Repository
             {
                 OnError(obj);
             };
-            _PlatformBonsai.ServiceCallBack = (platformModel) =>
+            foreach( var platformService in _PlatformBonsai.GetBonsaiServices)
             {
-                _MasterRepo.DataSource.PlatformModel = platformModel;
-                _MasterRepo.InvokePlatformServices(_PlatformBonsai);
-            };
+                platformService.platformHarness.ServiceCallBack = (platformModel) =>
+            {
+                    _MasterRepo.DataSource.PlatformModel = platformModel;
+                    //we are doing this?
+                    _MasterRepo.ReportToAllListeners(platformService.platformHarness.ServiceKey, platformModel);
+
+                };
+                platformService.platformHarness.Activate();
+            }
+
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>
             //{
@@ -91,8 +98,8 @@ namespace BaobabMobile.Implementation.Repository
         public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
             //translate(model, _Model);
-            var serviceReturnModel = await _Service.Refresh(model);
-            completeAction(serviceReturnModel);
+            //var serviceReturnModel = await _Service.Refresh(model);
+            //completeAction(serviceReturnModel);
         }
     }
 }

@@ -50,6 +50,7 @@ namespace BaobabMobile.Droid.Injection.Location
             {
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 100;
+                locator.PositionChanged += Locator_PositionChanged;;
 
                 position = await locator.GetLastKnownLocationAsync();
 
@@ -92,6 +93,11 @@ namespace BaobabMobile.Droid.Injection.Location
                 await GetCurrentPosition((position) =>
                                          ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude }));
             });
+        }
+
+        void Locator_PositionChanged(object sender, PositionEventArgs e)
+        {
+            ExecuteCallBack(new Location { Lat = e.Position.Latitude, Lon = e.Position.Longitude });
         }
     }
 }
