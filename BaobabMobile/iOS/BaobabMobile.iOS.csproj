@@ -119,7 +119,6 @@
     <Compile Include="Injection\SignalStrength\SignalStrengthService.cs" />
     <Compile Include="Injection\SignalStrength\SignalStrength.cs" />
     <Compile Include="Injection\Base\PlatformBonsai.cs" />
-    <Compile Include="Injection\Base\PlatformModelBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

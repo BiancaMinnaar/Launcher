@@ -1,6 +1,6 @@
 ﻿using BaobabMobile.Trunk.Injection.Base;
 
-namespace BaobabMobile.Droid.Injection.Base
+namespace BaobabMobile.Trunk.Injection.Base
 {
     public class PlatformModelBonsai : IPlatformModelBonsai
     {

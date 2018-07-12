@@ -1,5 +1,4 @@
 ﻿using System;
-using BaobabMobile.Droid.Injection.Base;
 
 namespace BaobabMobile.Trunk.Injection.Base
 {
