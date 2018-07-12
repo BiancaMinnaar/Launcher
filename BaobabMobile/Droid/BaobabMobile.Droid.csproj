@@ -48,9 +48,6 @@
     <PackageReference Include="NFCForms">
       <Version>2.3.2</Version>
     </PackageReference>
-    <PackageReference Include="Uhuru.Plugin.Geolocation">
-      <Version>1.0.1</Version>
-    </PackageReference>
     <PackageReference Include="Xam.Plugin.DeviceMotion">
       <Version>1.1.2</Version>
     </PackageReference>
@@ -77,6 +74,15 @@
     </PackageReference>
     <PackageReference Include="MobileBonsai">
       <Version>8.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>3.0.0.12</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.5.0.6</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +111,8 @@
     <Compile Include="Injection\Movement\DeviceMovementService.cs" />
     <Compile Include="Injection\Movement\DeviceMovement.cs" />
     <Compile Include="Injection\Base\PlatformModelBonsai.cs" />
+    <Compile Include="Injection\Location\LocationServiceCurrentActivity.cs" />
+    <Compile Include="MainApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />

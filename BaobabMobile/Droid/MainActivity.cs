@@ -7,6 +7,8 @@ using BaobabMobile.Droid.Injection.Base;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Droid.Injection.Location;
 using Android.Runtime;
+using Plugin.Permissions;
+using Plugin.CurrentActivity;
 
 namespace BaobabMobile.Droid
 {
@@ -16,11 +18,11 @@ namespace BaobabMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            PlatformSingleton.Instance.PlatformServiceList.Add<LocationService>(
+            CrossCurrentActivity.Current.Init(this, bundle);
+            PlatformSingleton.Instance.PlatformServiceList.Add<LocationServiceCurrentActivity>(
                 new BonsaiPlatformServiceRegistrationStruct
                 {
-                    ServiceKey = "LocationService",
+                ServiceKey = "LocationServiceCurrentActivity",
                 }, null);
 
 
@@ -43,6 +45,12 @@ namespace BaobabMobile.Droid
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Android;
+﻿using Android;
 using Android.Content;
 using Android.Content.PM;
 using Android.Support.V4.Content;
 using BaobabMobile.Droid.Injection.Location;
 using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
-using Plugin.Geolocation;
-using Plugin.Geolocation.Abstractions;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(LocationService))]
@@ -41,24 +37,24 @@ namespace BaobabMobile.Droid.Injection.Location
             canRequestingLocationUpdates = false;
         }
 
-        async Task setLocation(Action<LocationModel> callBack)
-        {
-            var locator = CrossGeolocation.Current;
-            locator.DesiredAccuracy = 100;
-            var position = await locator.GetPositionAsync();
-            callBack(position);
-        }
+        //async Task setLocation(Action<LocationModel> callBack)
+        //{
+        //    var locator = CrossGeolocation.Current;
+        //    locator.DesiredAccuracy = 100;
+        //    var position = await locator.GetPositionAsync();
+        //    callBack(position);
+        //}
 
-        public override void Activate()
-        {
-            var locator = CrossGeolocation.Current;
-                locator.DesiredAccuracy = 100;
+        //public override void Activate()
+        //{
+        //    var locator = CrossGeolocation.Current;
+        //        locator.DesiredAccuracy = 100;
 
-                Task.Run(async () => 
-                {
-                    await setLocation((position) =>
-                                ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude }));
-                });
-        }
+        //        Task.Run(async () => 
+        //        {
+        //            await setLocation((position) =>
+        //                        ExecuteCallBack(new Location { Lat = position.Latitude, Lon = position.Longitude }));
+        //        });
+        //}
     }
 }
