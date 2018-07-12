@@ -19,7 +19,7 @@ namespace BaobabMobile.Droid.Injection.Location
         Context context = Android.App.Application.Context;
         bool canRequestingLocationUpdates;
 
-        public override string ServiceKey => "LocationServiceCurrentActivity";
+        public override string ServiceKey => "LocationService";
 
         protected override void ConfigureRules()
         {
