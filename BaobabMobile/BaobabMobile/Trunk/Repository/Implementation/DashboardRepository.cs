@@ -52,6 +52,17 @@ namespace BaobabMobile.Implementation.Repository
                 platformService.platformHarness.Activate();
             }
 
+
+            _MasterRepo.OnPlatformServiceCallBack.Add((serviceKey, locationM) =>
+            {
+                if (serviceKey.Equals("LocationService"))
+                {
+                    model.Lat = ((ILocation)locationM).Lat;
+                    model.Lon = ((ILocation)locationM).Lon;
+                }
+            });
+
+
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
             //_LocationService.ServiceCallBack = (location) =>
             //{
@@ -97,6 +108,7 @@ namespace BaobabMobile.Implementation.Repository
 
         public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
+            var dd = model;
             //translate(model, _Model);
             //var serviceReturnModel = await _Service.Refresh(model);
             //completeAction(serviceReturnModel);
