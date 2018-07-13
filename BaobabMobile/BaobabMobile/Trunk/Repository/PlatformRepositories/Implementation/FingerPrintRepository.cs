@@ -10,6 +10,13 @@ namespace BaobabMobile.Trunk.Repository.PlatformRepositories.Implementation
         public FingerPrintRepository(IMasterRepository masterRepository)
             : base(masterRepository)
         {
+            _MasterRepo.OnPlatformServiceCallBack.Add(async (serviceKey, model) =>
+            {
+                if (serviceKey.Equals("FingerPrintService"))
+                {
+                    var me = model;
+                }
+            });
         }
     }
 }

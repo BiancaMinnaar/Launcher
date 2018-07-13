@@ -126,6 +126,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\PlatformRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\MobileDeviceRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IMobileDeviceRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\IFingerPrint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -148,6 +149,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Images\General\Menu.svg" />

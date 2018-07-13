@@ -116,6 +116,7 @@
     <Compile Include="Injection\Location\LocationServiceCurrentActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Injection\FingerPrintScanner\FingerPrintService.cs" />
+    <Compile Include="Injection\FingerPrintScanner\FingerPrint.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />

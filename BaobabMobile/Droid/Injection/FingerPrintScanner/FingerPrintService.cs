@@ -22,7 +22,7 @@ namespace BaobabMobile.Droid.Injection.FingerPrintScanner
             var result = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers!");
             if (result.Authenticated)
             {
-                // do secret stuff :)
+                ExecuteCallBack(new FingerPrint{IsValid=true});
             }
             else
             {
