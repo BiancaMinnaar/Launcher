@@ -62,16 +62,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\BrowserRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IBrowserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\BrowserService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\IMobileDeviceRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\MobileDeviceRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\TrackLocationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\View\TrackLocationView.xaml.cs">
       <DependentUpon>TrackLocationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\ITrackLocationViewController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewController\Implementation\TrackLocationViewController.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\ITrackLocationRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\TrackLocationRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\ITrackLocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\TrackLocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\LoginViewModel.cs" />
@@ -122,8 +118,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformSingleton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\BonsaiPlatformServiceRegistrationStruct.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformModelBonsai.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\IPlatformRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\PlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IFingerPrintRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\FingerPrintRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\TrackLocationRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\ITrackLocationRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IPlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\PlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\MobileDeviceRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IMobileDeviceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -144,6 +146,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Images\" />
     <Folder Include="$(MSBuildThisFileDirectory)Images\General\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Background\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Images\General\Menu.svg" />
