@@ -8,6 +8,7 @@ using BaobabMobile.Trunk.Injection.Base;
 using BaobabMobile.Trunk.Injection.Location;
 using BaobabMobile.Trunk.Injection.Movement;
 using BaobabMobile.Trunk.Injection.SignalStrength;
+using BaobabMobile.Trunk.Repository.Implementation;
 using CorePCL;
 using Xamarin.Forms;
 
@@ -18,9 +19,6 @@ namespace BaobabMobile.Implementation.Repository
     {
         public DashboardViewModel _Model;
         IDashboardService<T> _Service;
-        ILocationService<ILocation> _LocationService;
-        ISignalStrengthService<ISignalStrength> _SignalStrengthService;
-        IDeviceMovementService<IDeviceMovement> _MovementService;
         IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
         Action<string[]> IDashboardRepository<T>.OnError 
@@ -36,23 +34,8 @@ namespace BaobabMobile.Implementation.Repository
             //var tracker = new TrackLocationRepository<TrackLocationViewModel>(_MasterRepo, trackLocationService);
             _Service = service;
             _Model = model;
-            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
-            _PlatformBonsai.OnError = (obj) => 
-            {
-                OnError(obj);
-            };
-            foreach( var platformService in _PlatformBonsai.GetBonsaiServices)
-            {
-                platformService.platformHarness.ServiceCallBack = (platformModel) =>
-            {
-                    _MasterRepo.DataSource.PlatformModel = platformModel;
-                    //we are doing this?
-                    _MasterRepo.ReportToAllListeners(platformService.platformHarness.ServiceKey, platformModel);
-
-                };
-                platformService.platformHarness.Activate();
-            }
-
+            var platform = new PlatformRepository<DashboardViewModel>(masterRepository);
+                 
 
             //_MasterRepo.OnPlatformServiceCallBack.Add((serviceKey, locationM) =>
             //{

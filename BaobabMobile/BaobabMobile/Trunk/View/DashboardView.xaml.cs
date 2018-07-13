@@ -22,14 +22,11 @@ namespace BaobabMobile.Implementation.View
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-            On_Refresh_Event(this, null);
-
 		}
 
 		public void On_Refresh_Event(object sender, EventArgs e)
         {
             _ViewController.Refresh();
-
         }
 
         public void OnMenuTapped(object sender, EventArgs e)

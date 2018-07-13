@@ -123,6 +123,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformSingleton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\BonsaiPlatformServiceRegistrationStruct.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformModelBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\IPlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\Implementation\PlatformRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
