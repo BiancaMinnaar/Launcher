@@ -96,7 +96,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\DashboardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\ILocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\ILocationService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Location\LocationUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\ISignalStrengthService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\SignalStrengthUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\SignalStrength\ISignalStrength.cs" />
