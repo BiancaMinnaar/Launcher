@@ -7,6 +7,6 @@ namespace BaobabMobile.Droid.Injection.Location
         public double Lat { get; set; }
         public double Lon { get; set; }
 
-        public string PlatformName {get;}
+        public string ErrorMessage {get;}
     }
 }

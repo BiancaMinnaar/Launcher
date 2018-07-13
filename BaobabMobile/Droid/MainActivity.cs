@@ -9,6 +9,7 @@ using BaobabMobile.Droid.Injection.Location;
 using Android.Runtime;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
+using BaobabMobile.Droid.Injection.FingerPrintScanner;
 
 namespace BaobabMobile.Droid
 {
@@ -21,6 +22,8 @@ namespace BaobabMobile.Droid
             CrossCurrentActivity.Current.Init(this, bundle);
             PlatformSingleton.Instance.PlatformServiceList.Add
                              <LocationServiceCurrentActivity>(null);
+            PlatformSingleton.Instance.PlatformServiceList.Add
+                             <FingerPrintService>(null);
 
 
             //PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",

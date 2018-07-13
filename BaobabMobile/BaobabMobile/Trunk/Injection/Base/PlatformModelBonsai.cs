@@ -7,7 +7,7 @@ namespace BaobabMobile.Trunk.Injection.Base
         public bool IsBackgroundAvailable { get; set; }
         public bool IsInBackground { get; set; }
 
-        public string PlatformName { get; }
+        public string ErrorMessage { get; }
 
         public PlatformModelBonsai()
         {

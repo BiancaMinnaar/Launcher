@@ -4,7 +4,7 @@ namespace BaobabMobile.Droid.Injection.FingerPrintScanner
 {
     public class FingerPrint : IFingerPrint
     {
-        public string PlatformName { get; }
+        public string ErrorMessage { get; }
         public bool IsValid { get; set; }
     }
 }

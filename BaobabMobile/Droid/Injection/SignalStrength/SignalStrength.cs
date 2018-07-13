@@ -6,6 +6,6 @@ namespace BaobabMobile.Droid.Injection.SignalStrength
     {
         public int Strength { get; set; }
 
-        public string PlatformName { get; }
+        public string ErrorMessage { get; }
     }
 }

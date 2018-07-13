@@ -26,7 +26,7 @@ namespace BaobabMobile.Droid.Injection.FingerPrintScanner
             }
             else
             {
-                // not allowed to do secret stuff :(
+                OnError(new string[] { ServiceKey + " Reported " + result.Status.ToString(), result.ErrorMessage });
             }
         }
     }

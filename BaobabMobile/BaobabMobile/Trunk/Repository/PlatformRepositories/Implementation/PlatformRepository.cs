@@ -32,6 +32,11 @@ namespace BaobabMobile.Trunk.Repository.Implementation
                     SetPlatformModelAndReportToAllListeners(platformService, platformModel);
 
                 };
+                platformService.PlatformHarness.OnError = (errorList) =>
+                {
+                    Errors = errorList;
+                    OnError?.Invoke(errorList);
+                };
                 platformService.PlatformHarness.Activate();
             }
         }

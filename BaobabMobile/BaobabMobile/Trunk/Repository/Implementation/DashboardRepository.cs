@@ -5,6 +5,7 @@ using BaobabMobile.Interface.Service;
 using BaobabMobile.Root.Repository;
 using BaobabMobile.Trunk.Injection.Location;
 using BaobabMobile.Trunk.Repository.Implementation;
+using BaobabMobile.Trunk.Repository.PlatformRepositories.Implementation;
 using CorePCL;
 
 namespace BaobabMobile.Implementation.Repository
@@ -15,8 +16,7 @@ namespace BaobabMobile.Implementation.Repository
         public DashboardViewModel _Model;
         IDashboardService<T> _Service;
 
-        Action<string[]> IDashboardRepository<T>.OnError 
-        { get; set; }
+
 
         public DashboardRepository(
             IMasterRepository masterRepository, 
@@ -29,6 +29,11 @@ namespace BaobabMobile.Implementation.Repository
             _Service = service;
             _Model = model;
             var platform = new PlatformRepository<DashboardViewModel>(masterRepository);
+            platform.OnError = (errs) =>
+            {
+                OnError?.Invoke(errs);
+            };
+            var FingerPrint = new FingerPrintRepository<DashboardViewModel>(masterRepository);
         }
 
         public void AddLocationServiceListernerToUpdateModel(DashboardViewModel model)

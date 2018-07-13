@@ -2,6 +2,6 @@
 {
     public interface IPlatformModelBase
     {
-        string PlatformName { get; }
+        string ErrorMessage { get; }
     }
 }
