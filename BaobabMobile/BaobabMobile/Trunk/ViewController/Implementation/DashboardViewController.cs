@@ -26,21 +26,6 @@ namespace BaobabMobile.Implementation.ViewController
             _Reposetory.AddLocationServiceListernerToUpdateModel(InputObject);
         }
 
-        public void Refresh()
-        {
-            _MasterRepo.OnError = (obj) => 
-            {
-                foreach(string error in obj)
-                {
-                    ShowError(error);
-                }
-            };
-            _Reposetory.Refresh(InputObject, (DashboardViewModel obj) => 
-            {
-                
-            });
-        }
-
         public void ShowMenu()
         {
             _MasterRepo.ShowMenu();

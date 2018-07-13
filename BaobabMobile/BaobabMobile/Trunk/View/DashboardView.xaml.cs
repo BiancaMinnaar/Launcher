@@ -24,16 +24,9 @@ namespace BaobabMobile.Implementation.View
 			base.OnAppearing();
 		}
 
-		public void On_Refresh_Event(object sender, EventArgs e)
-        {
-            _ViewController.Refresh();
-        }
-
         public void OnMenuTapped(object sender, EventArgs e)
         {
             _ViewController.ShowMenu();
         }
     }
 }
-
-
