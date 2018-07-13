@@ -84,6 +84,9 @@
     <PackageReference Include="Xam.Plugin.Geolocator">
       <Version>4.5.0.6</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.Fingerprint">
+      <Version>1.4.7</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -112,6 +115,7 @@
     <Compile Include="Injection\Movement\DeviceMovement.cs" />
     <Compile Include="Injection\Location\LocationServiceCurrentActivity.cs" />
     <Compile Include="MainApplication.cs" />
+    <Compile Include="Injection\FingerPrintScanner\FingerPrintService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
@@ -130,6 +134,7 @@
     <Folder Include="Injection\Base\" />
     <Folder Include="Injection\Movement\" />
     <Folder Include="Injection\NFC\" />
+    <Folder Include="Injection\FingerPrintScanner\" />
   </ItemGroup>
   <Import Project="..\BaobabMobile\BaobabMobile.projitems" Label="Shared" Condition="Exists('..\BaobabMobile\BaobabMobile.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
