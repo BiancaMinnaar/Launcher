@@ -1,9 +1,14 @@
-﻿using System;
+﻿using BaobabMobile.Interface.Repository;
+using BaobabMobile.Root.Repository;
+using CorePCL;
+
 namespace BaobabMobile.Trunk.Repository.PlatformRepositories.Implementation
 {
-    public class FingerPrintRepository
+    public class FingerPrintRepository<T> : ProjectBaseRepository, IFingerPrintRepository<T>
+        where T : BaseViewModel
     {
-        public FingerPrintRepository()
+        public FingerPrintRepository(IMasterRepository masterRepository)
+            : base(masterRepository)
         {
         }
     }
