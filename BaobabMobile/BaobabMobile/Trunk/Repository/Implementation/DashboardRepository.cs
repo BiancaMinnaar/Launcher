@@ -33,8 +33,9 @@ namespace BaobabMobile.Implementation.Repository
             DashboardViewModel model)
             : base(masterRepository)
         {
-            var tracker = new TrackLocationRepository<TrackLocationViewModel>(_MasterRepo, trackLocationService);
+            //var tracker = new TrackLocationRepository<TrackLocationViewModel>(_MasterRepo, trackLocationService);
             _Service = service;
+            _Model = model;
             _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
             _PlatformBonsai.OnError = (obj) => 
             {
@@ -53,14 +54,14 @@ namespace BaobabMobile.Implementation.Repository
             }
 
 
-            _MasterRepo.OnPlatformServiceCallBack.Add((serviceKey, locationM) =>
-            {
-                if (serviceKey.Equals("LocationService"))
-                {
-                    model.Lat = ((ILocation)locationM).Lat;
-                    model.Lon = ((ILocation)locationM).Lon;
-                }
-            });
+            //_MasterRepo.OnPlatformServiceCallBack.Add((serviceKey, locationM) =>
+            //{
+            //    if (serviceKey.Equals("LocationService"))
+            //    {
+            //        model.Lat = ((ILocation)locationM).Lat;
+            //        model.Lon = ((ILocation)locationM).Lon;
+            //    }
+            //});
 
 
             //_LocationService = DependencyService.Get<ILocationService<ILocation>>();
@@ -69,7 +70,7 @@ namespace BaobabMobile.Implementation.Repository
             //    model.Lat = location.Lat;
             //    model.Lon = location.Lon;
             //};
-            //_Model = model;
+
             //_LocationService.StartLocationUpdates();
             //_SignalStrengthService = DependencyService.Get<ISignalStrengthService<ISignalStrength>>();
             //_SignalStrengthService.ServiceCallBack = (signalStrength) => { model.SignalStrength = signalStrength.Strength; };
@@ -81,6 +82,18 @@ namespace BaobabMobile.Implementation.Repository
             //    model.MotionVectorZ = movment.MotionVectorZ;
             //    model.CompassValue = movment.CompassValue;
             //};
+        }
+
+        public void AddLocationServiceListernerToUpdateModel(DashboardViewModel model)
+        {
+            _MasterRepo.OnPlatformServiceCallBack.Add((serviceKey, locationM) =>
+            {
+                if (serviceKey.Equals("LocationService"))
+                {
+                    model.Lat = ((ILocation)locationM).Lat;
+                    model.Lon = ((ILocation)locationM).Lon;
+                }
+            });
         }
 
         private void translate(DashboardViewModel oldObj, ILocation newObj)
@@ -112,6 +125,7 @@ namespace BaobabMobile.Implementation.Repository
             //translate(model, _Model);
             //var serviceReturnModel = await _Service.Refresh(model);
             //completeAction(serviceReturnModel);
+            completeAction(null);
         }
     }
 }
