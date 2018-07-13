@@ -27,19 +27,19 @@ namespace BaobabMobile.Trunk.Repository.Implementation
         {
             foreach (var platformService in _PlatformBonsai.GetBonsaiServices)
             {
-                platformService.platformHarness.ServiceCallBack = (platformModel) =>
+                platformService.PlatformHarness.ServiceCallBack = (platformModel) =>
                 {
                     SetPlatformModelAndReportToAllListeners(platformService, platformModel);
 
                 };
-                platformService.platformHarness.Activate();
+                platformService.PlatformHarness.Activate();
             }
         }
 
         void SetPlatformModelAndReportToAllListeners(BonsaiPlatformServiceRegistrationStruct platformService, IPlatformModelBase platformModel)
         {
             _MasterRepo.DataSource.PlatformModel = platformModel;
-            _MasterRepo.ReportToAllListeners(platformService.platformHarness.ServiceKey, platformModel);
+            _MasterRepo.ReportToAllListeners(platformService.PlatformHarness.ServiceKey, platformModel);
         }
     }
 }

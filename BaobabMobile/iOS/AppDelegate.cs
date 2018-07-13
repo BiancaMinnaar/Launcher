@@ -13,10 +13,6 @@ namespace BaobabMobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             PlatformSingleton.Instance.PlatformServiceList.Add<LocationService>(
-                new BonsaiPlatformServiceRegistrationStruct
-                {
-                    ServiceKey = "LocationService",
-                }, 
                 new CLLocationManager
                 {
                     PausesLocationUpdatesAutomatically = false

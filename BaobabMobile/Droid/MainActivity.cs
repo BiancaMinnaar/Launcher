@@ -19,11 +19,8 @@ namespace BaobabMobile.Droid
         {
             base.OnCreate(bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
-            PlatformSingleton.Instance.PlatformServiceList.Add<LocationServiceCurrentActivity>(
-                new BonsaiPlatformServiceRegistrationStruct
-                {
-                ServiceKey = "LocationServiceCurrentActivity",
-                }, null);
+            PlatformSingleton.Instance.PlatformServiceList.Add
+                             <LocationServiceCurrentActivity>(null);
 
 
             //PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
