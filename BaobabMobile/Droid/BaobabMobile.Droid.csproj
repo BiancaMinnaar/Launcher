@@ -117,6 +117,8 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Injection\FingerPrintScanner\FingerPrintService.cs" />
     <Compile Include="Injection\FingerPrintScanner\FingerPrint.cs" />
+    <Compile Include="Injection\NFC\NFCData.cs" />
+    <Compile Include="Injection\NFC\NFCService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
