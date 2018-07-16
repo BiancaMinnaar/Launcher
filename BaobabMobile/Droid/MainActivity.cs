@@ -13,6 +13,7 @@ using BaobabMobile.Droid.Injection.FingerPrintScanner;
 using Android.Nfc;
 using Poz1.NFCForms.Droid;
 using Poz1.NFCForms.Abstract;
+using BaobabMobile.Droid.Injection.NFC;
 
 namespace BaobabMobile.Droid
 {
@@ -32,19 +33,20 @@ namespace BaobabMobile.Droid
             NFCdevice = NfcManager.DefaultAdapter;
 
             Xamarin.Forms.DependencyService.Register<INfcForms, NfcForms>();
-            x = Xamarin.Forms.DependencyService.Get<INfcForms>() as NfcForms;
 
             PlatformSingleton.Instance.PlatformServiceList.Add
                              <LocationServiceCurrentActivity>(null);
             PlatformSingleton.Instance.PlatformServiceList.Add
                              <FingerPrintService>(null);
+            PlatformSingleton.Instance.PlatformServiceList.Add
+                             <NFCService>(null);
 
 
             //PlatformSingelton.Instance.PlatformServiceList.Add("TelephonyService",
             //    GetSystemService(Context.TelephonyService));
-            //PlatformSingelton.Instance.PlatformServiceList.Add("NfcManager",
-                                                               //GetSystemService(Context.NfcService));
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            x = Xamarin.Forms.DependencyService.Get<INfcForms>() as NfcForms;
             LoadApplication(new App());
         }
 
